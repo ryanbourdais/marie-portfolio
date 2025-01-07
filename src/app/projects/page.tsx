@@ -1,8 +1,11 @@
+'use client'
 import { Button } from '../components/ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Filter, ArrowRight } from 'lucide-react'
+import { Filter, ArrowRight, ArrowUpDown } from 'lucide-react'
 import { getAllProjects } from '@/data/projects'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 interface ProjectCardProps {
   id: string
@@ -16,7 +19,14 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ title, category, description, id, images }: ProjectCardProps) => (
-  <div className="group cursor-pointer">
+  <motion.div
+    layout
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: 20 }}
+    transition={{ duration: 0.3 }}
+    className="group cursor-pointer"
+  >
     <Link href={`/projects/${id}`}>
       <div className="relative h-[300px] overflow-hidden rounded-lg mb-4">
         <Image
@@ -33,10 +43,32 @@ const ProjectCard = ({ title, category, description, id, images }: ProjectCardPr
       </div>
       <p className="text-gray-600 line-clamp-2">{description}</p>
     </Link>
-  </div>
+  </motion.div>
 )
 
+type SortOption = 'newest' | 'oldest' | 'title' | 'location'
+
+const sortProjects = (projects: any[], sortBy: SortOption) => {
+  return [...projects].sort((a, b) => {
+    switch (sortBy) {
+      case 'newest':
+        return parseInt(b.year) - parseInt(a.year)
+      case 'oldest':
+        return parseInt(a.year) - parseInt(b.year)
+      case 'title':
+        return a.title.localeCompare(b.title)
+      case 'location':
+        return a.location.localeCompare(b.location)
+      default:
+        return 0
+    }
+  })
+}
+
 export default function ProjectsPage() {
+  const [selectedCategory, setSelectedCategory] = useState("All Projects")
+  const [sortBy, setSortBy] = useState<SortOption>('newest')
+  
   const categories = [
     "All Projects",
     "Residential",
@@ -44,12 +76,27 @@ export default function ProjectsPage() {
     "Technical Documentation"
   ]
 
-  const projects = getAllProjects()
+  const sortOptions: { value: SortOption; label: string }[] = [
+    { value: 'newest', label: 'Newest First' },
+    { value: 'oldest', label: 'Oldest First' },
+    { value: 'title', label: 'Project Name' },
+    { value: 'location', label: 'Location' },
+  ]
+
+  const allProjects = getAllProjects()
+  const filteredProjects = selectedCategory === "All Projects"
+    ? allProjects
+    : allProjects.filter(project => project.category === selectedCategory)
+  
+  const sortedProjects = sortProjects(filteredProjects, sortBy)
 
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="bg-accent text-white py-20">
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="bg-accent text-white py-20"
+      >
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             My Projects
@@ -59,39 +106,124 @@ export default function ProjectsPage() {
             commercial projects, and technical documentation.
           </p>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Filters */}
-      <section className="py-8 border-b">
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        className="py-8 border-b"
+      >
         <div className="container mx-auto px-4">
-          <div className="flex items-center gap-4 overflow-x-auto pb-4">
-            <Filter className="w-5 h-5 text-gray-400" />
-            {categories.map((category, index) => (
-              <Button
-                key={index}
-                variant={index === 0 ? "default" : "outline"}
-                className="whitespace-nowrap"
-              >
-                {category}
-              </Button>
-            ))}
+          <div className="flex flex-col md:flex-row md:items-center gap-4">
+            {/* Categories */}
+            <div className="flex items-center gap-4 overflow-x-auto pb-4 md:pb-0 flex-grow">
+              <Filter className="w-5 h-5 text-gray-400 flex-shrink-0" />
+              {categories.map((category) => (
+                <motion.div
+                  key={category}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button
+                    variant={category === selectedCategory ? "default" : "outline"}
+                    className="whitespace-nowrap"
+                    onClick={() => setSelectedCategory(category)}
+                  >
+                    {category}
+                    {category === selectedCategory && (
+                      <motion.span
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="ml-2 text-xs bg-white/20 px-2 py-0.5 rounded-full"
+                      >
+                        {sortedProjects.length}
+                      </motion.span>
+                    )}
+                  </Button>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Sort Options */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="flex items-center gap-2 border-t md:border-t-0 pt-4 md:pt-0 md:border-l md:pl-4"
+            >
+              <ArrowUpDown className="w-5 h-5 text-gray-400" />
+              <div className="flex gap-2">
+                {sortOptions.map((option) => (
+                  <motion.div
+                    key={option.value}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button
+                      variant={sortBy === option.value ? "default" : "outline"}
+                      size="sm"
+                      className="whitespace-nowrap"
+                      onClick={() => setSortBy(option.value)}
+                    >
+                      {option.label}
+                    </Button>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Projects Grid */}
-      <section className="py-12">
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4 }}
+        className="py-12"
+      >
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                {...project}
-              />
-            ))}
-          </div>
+          <AnimatePresence mode="popLayout">
+            {sortedProjects.length > 0 ? (
+              <motion.div
+                layout
+                className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+              >
+                {sortedProjects.map((project) => (
+                  <ProjectCard
+                    key={project.id}
+                    {...project}
+                  />
+                ))}
+              </motion.div>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                className="text-center py-12"
+              >
+                <p className="text-gray-600">
+                  No projects found in this category.
+                </p>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button
+                    variant="outline"
+                    className="mt-4"
+                    onClick={() => setSelectedCategory("All Projects")}
+                  >
+                    Show all projects
+                  </Button>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-      </section>
+      </motion.section>
     </div>
   )
 } 

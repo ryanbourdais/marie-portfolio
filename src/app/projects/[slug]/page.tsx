@@ -1,8 +1,12 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import { Button } from '../../components/ui/button'
 import { getProject } from '@/data/projects'
+import { useState } from 'react'
+import { Lightbox } from '@/app/components/ui/lightbox'
+import { DrawingViewer } from '@/app/components/ui/drawing-viewer'
 
 interface PageProps {
   params: {
@@ -11,10 +15,17 @@ interface PageProps {
 }
 
 export default function ProjectPage({ params }: PageProps) {
+  const [lightboxOpen, setLightboxOpen] = useState(false)
+  const [initialImageIndex, setInitialImageIndex] = useState(0)
   const project = getProject(params.slug)
 
   if (!project) {
     return <div>Project not found</div>
+  }
+
+  const openLightbox = (index: number) => {
+    setInitialImageIndex(index)
+    setLightboxOpen(true)
   }
 
   return (
@@ -78,14 +89,18 @@ export default function ProjectPage({ params }: PageProps) {
 
             {/* Image Gallery */}
             <section className="space-y-4">
-              {project.images.slice(1).map((image, index) => (
-                <figure key={index} className="space-y-2">
+              {project.images.map((image, index) => (
+                <figure 
+                  key={index} 
+                  className="space-y-2 cursor-zoom-in"
+                  onClick={() => openLightbox(index)}
+                >
                   <div className="relative h-[400px] bg-gray-100">
                     <Image
                       src={image.url}
                       alt={image.alt}
                       fill
-                      className="object-cover"
+                      className="object-cover hover:opacity-90 transition-opacity"
                     />
                   </div>
                   <figcaption className="text-sm text-gray-500">
@@ -94,6 +109,25 @@ export default function ProjectPage({ params }: PageProps) {
                 </figure>
               ))}
             </section>
+
+            {project.technicalDrawings && (
+              <section>
+                <h2 className="text-2xl font-bold mb-4">Technical Drawings</h2>
+                <div className="space-y-8">
+                  {project.technicalDrawings.map((drawing, index) => (
+                    <div key={index} className="space-y-4">
+                      <h3 className="text-xl font-semibold">{drawing.title}</h3>
+                      <DrawingViewer
+                        imageUrl={drawing.url}
+                        title={drawing.title}
+                        measurements={drawing.measurements}
+                        onDownload={() => window.open(drawing.url, '_blank')}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
 
           {/* Sidebar */}
@@ -117,6 +151,13 @@ export default function ProjectPage({ params }: PageProps) {
           </div>
         </div>
       </div>
+
+      <Lightbox
+        images={project.images}
+        initialIndex={initialImageIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+      />
     </div>
   )
 } 

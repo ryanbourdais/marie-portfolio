@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Button } from './ui/button'
+import { AvailabilityIndicator } from './AvailabilityIndicator'
 
 export default function Header() {
   return (
@@ -10,7 +11,8 @@ export default function Header() {
             Marie French
           </Link>
           
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6">
+            <AvailabilityIndicator variant="compact" />
             <Link href="/" className="text-gray-600 hover:text-gray-900">
               Home
             </Link>
