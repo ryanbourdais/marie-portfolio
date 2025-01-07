@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { Button } from './ui/button'
 
 export default function Header() {
   return (
@@ -7,7 +7,7 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="text-xl font-bold text-gray-800">
-            Portfolio
+            Marie French
           </Link>
           
           <nav className="hidden md:flex items-center gap-8">
@@ -17,11 +17,11 @@ export default function Header() {
             <Link href="/projects" className="text-gray-600 hover:text-gray-900">
               Projects
             </Link>
-            <Link href="/contact" className="text-gray-600 hover:text-gray-900">
-              Contact
+            <Link href="/about" className="text-gray-600 hover:text-gray-900">
+              About
             </Link>
             <Button asChild>
-              <Link href="/contact">Get in Touch</Link>
+              <Link href="/contact">Let's Work Together</Link>
             </Button>
           </nav>
         </div>
