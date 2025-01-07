@@ -7,13 +7,13 @@ import CallToAction from './components/CallToAction'
 
 export default function Home() {
   return (
-    <div>
+    <main>
       <Hero />
       <Services />
       <FeaturedProjects />
       <Skills />
       <Testimonials />
       <CallToAction />
-    </div>
+    </main>
   )
 } 

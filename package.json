@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@netlify/plugin-nextjs": "^4.41.3",
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-slot": "^1.1.1",
     "class-variance-authority": "^0.7.0",

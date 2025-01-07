@@ -1,13 +1,11 @@
 /** @type {import('next').NextConfig} */
-const config = {
+const nextConfig = {
+  output: 'export',  // This replaces next export
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-    ],
+    unoptimized: true,
+    domains: ['images.unsplash.com'],
   },
+  trailingSlash: true,
 }
 
-export default config 
+export default nextConfig 
