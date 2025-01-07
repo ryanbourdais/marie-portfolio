@@ -1,6 +1,7 @@
 import { heroContent } from '@/data/content'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Hero() {
   return (
@@ -29,12 +30,15 @@ export default function Hero() {
               {heroContent.subtitle}
             </p>
             <div className="flex gap-4 animate-slide-up delay-300">
-              <Button 
-                size="lg"
-                className="bg-accent hover:bg-accent/90"
-              >
-                {heroContent.buttons.primary}
-              </Button>
+              <Link href="/projects">
+                <Button 
+                  size="lg"
+                  className="bg-accent hover:bg-accent/90"
+                >
+                  {heroContent.buttons.primary}
+                </Button>
+              </Link>
+              <Link href="/contact">
               <Button 
                 size="lg" 
                 variant="outline"
@@ -42,6 +46,7 @@ export default function Hero() {
               >
                 {heroContent.buttons.secondary}
               </Button>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Button } from './ui/button'
 import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 interface ProjectCardProps {
   title: string
@@ -64,10 +65,12 @@ export default function FeaturedProjects() {
               A selection of my latest architectural drafting and design work
             </p>
           </div>
-          <Button variant="outline" className="hidden md:flex items-center gap-2">
-            View All Projects
-            <ArrowRight className="w-4 h-4" />
-          </Button>
+          <Link href="/projects">
+            <Button variant="outline" className="hidden md:flex items-center gap-2">
+              View All Projects
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -80,10 +83,12 @@ export default function FeaturedProjects() {
         </div>
 
         <div className="mt-12 text-center md:hidden">
+          <Link href="/projects">
           <Button variant="outline" className="flex items-center gap-2 mx-auto">
             View All Projects
             <ArrowRight className="w-4 h-4" />
           </Button>
+          </Link>
         </div>
       </div>
     </section>

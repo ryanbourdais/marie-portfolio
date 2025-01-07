@@ -15,12 +15,12 @@ const SkillCategory = ({ title, skills }: SkillCategoryProps) => (
       {skills.map((skill, index) => (
         <div key={index} className="flex items-center gap-2">
           <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />
-          <span className="text-gray-600">{skill.name}</span>
+          <span className="text-gray-600 w-48">{skill.name}</span>
           {skill.proficiency && (
-            <div className="flex-1 h-2 bg-gray-200 rounded-full ml-2">
+            <div className="w-48 h-2 bg-gray-200 rounded-full">
               <div 
                 className="h-full bg-accent rounded-full"
-                style={{ width: `${skill.proficiency}%` }}
+                style={{ width: `${(skill.proficiency / 10) * 100}%` }}
               />
             </div>
           )}
@@ -35,10 +35,10 @@ export default function Skills() {
     {
       title: "Software Proficiency",
       skills: [
-        { name: "AutoCAD", proficiency: 95 },
-        { name: "Revit", proficiency: 90 },
-        { name: "SketchUp", proficiency: 85 },
-        { name: "Adobe Creative Suite", proficiency: 80 }
+        { name: "AutoCAD", proficiency: 9 },
+        { name: "Revit", proficiency: 8 },
+        { name: "SketchUp", proficiency: 8 },
+        { name: "Adobe Creative Suite", proficiency: 7 }
       ]
     },
     {
