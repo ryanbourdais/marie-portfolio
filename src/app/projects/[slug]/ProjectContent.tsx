@@ -60,8 +60,89 @@ export function ProjectContent({ project }: ProjectContentProps) {
         </div>
       </div>
 
-      {/* Rest of your content... */}
-      {/* Copy all the content sections from the original page component */}
+      {/* Content */}
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-3 gap-12">
+          {/* Main Content */}
+          <div className="md:col-span-2 space-y-8">
+            <section>
+              <h2 className="text-2xl font-bold mb-4">Project Overview</h2>
+              <p className="text-gray-600">{project.description}</p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold mb-4">The Challenge</h2>
+              <p className="text-gray-600">{project.challenge}</p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold mb-4">The Solution</h2>
+              <p className="text-gray-600">{project.solution}</p>
+            </section>
+
+            {/* Image Gallery */}
+            <section className="space-y-4">
+              {project.images.map((image, index) => (
+                <figure 
+                  key={index} 
+                  className="space-y-2 cursor-zoom-in"
+                  onClick={() => openLightbox(index)}
+                >
+                  <div className="relative h-[400px] bg-gray-100">
+                    <Image
+                      src={image.url}
+                      alt={image.alt}
+                      fill
+                      className="object-cover hover:opacity-90 transition-opacity"
+                    />
+                  </div>
+                  <figcaption className="text-sm text-gray-500">
+                    {image.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </section>
+
+            {project.technicalDrawings && (
+              <section>
+                <h2 className="text-2xl font-bold mb-4">Technical Drawings</h2>
+                <div className="space-y-8">
+                  {project.technicalDrawings.map((drawing, index) => (
+                    <div key={index} className="space-y-4">
+                      <h3 className="text-xl font-semibold">{drawing.title}</h3>
+                      <DrawingViewer
+                        imageUrl={drawing.url}
+                        title={drawing.title}
+                        onDownload={() => window.open(drawing.url, '_blank')}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-8">
+            <section>
+              <h3 className="text-lg font-bold mb-4">Services Provided</h3>
+              <ul className="space-y-2">
+                {project.services.map((service, index) => (
+                  <li key={index} className="text-gray-600">
+                    • {service}
+                  </li>
+                ))}
+              </ul>
+            </section>
+
+            <Button asChild className="w-full">
+              <Link href="/contact">
+                Discuss Your Project
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </div>
 
       <Lightbox
         images={project.images}
