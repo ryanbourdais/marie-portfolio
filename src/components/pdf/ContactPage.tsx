@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     marginBottom: pdfTheme.spacing.xl,
   },
   subtitle: {
-    ...sharedStyles.text.regular,
+    ...sharedStyles.textRegular,
     fontSize: 14,
     marginBottom: pdfTheme.spacing.lg,
   },
@@ -26,11 +26,11 @@ const styles = StyleSheet.create({
     width: '45%',
   },
   label: {
-    ...sharedStyles.text.small,
+    ...sharedStyles.textSmall,
     marginBottom: pdfTheme.spacing.xs,
   },
   value: {
-    ...sharedStyles.text.regular,
+    ...sharedStyles.textRegular,
     color: pdfTheme.colors.text.primary,
   },
   social: {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   availability: {
-    ...sharedStyles.text.small,
+    ...sharedStyles.textSmall,
     marginTop: pdfTheme.spacing.xl,
   }
 })

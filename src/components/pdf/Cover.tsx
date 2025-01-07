@@ -6,17 +6,17 @@ import { pdfTheme, sharedStyles } from './styles'
 
 const styles = StyleSheet.create({
   header: {
-    marginBottom: pdfTheme.spacing.xxl,
+    marginBottom: pdfTheme.spacing.xl,
   },
   title: {
     ...sharedStyles.pageTitle,
-    fontSize: 32,  // Larger for cover page
+    fontSize: 32,
     marginBottom: pdfTheme.spacing.md,
   },
   subtitle: {
-    fontSize: 18,
+    ...sharedStyles.textRegular,
+    fontSize: 16,
     color: pdfTheme.colors.text.secondary,
-    marginBottom: pdfTheme.spacing.xl,
   },
   contact: {
     marginTop: 'auto',
@@ -24,17 +24,17 @@ const styles = StyleSheet.create({
     paddingTop: pdfTheme.spacing.lg,
   },
   contactItem: {
-    ...sharedStyles.text.regular,
+    ...sharedStyles.textRegular,
     marginBottom: pdfTheme.spacing.sm,
   }
 })
 
-interface CoverPageProps {
+interface CoverProps {
   pageNumber: number
   totalPages: number
 }
 
-export function CoverPage({ pageNumber, totalPages }: CoverPageProps) {
+export function Cover({ pageNumber, totalPages }: CoverProps) {
   return (
     <PageWrapper pageNumber={pageNumber} totalPages={totalPages}>
       <View style={styles.header}>
@@ -49,4 +49,6 @@ export function CoverPage({ pageNumber, totalPages }: CoverPageProps) {
       </View>
     </PageWrapper>
   )
-} 
+}
+
+export const CoverPage = Cover 

@@ -1,11 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',  // This replaces next export
+  output: 'export',
   images: {
     unoptimized: true,
-    domains: ['images.unsplash.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
   },
-  trailingSlash: true,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  transpilePackages: ['@react-pdf/renderer']
 }
 
 export default nextConfig 

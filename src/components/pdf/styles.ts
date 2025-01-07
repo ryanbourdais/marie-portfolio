@@ -1,53 +1,46 @@
+import { StyleSheet } from '@react-pdf/renderer'
+
 export const pdfTheme = {
   colors: {
-    accent: '#0070f3',  // Match your website's accent color
     text: {
-      primary: '#333333',
+      primary: '#000000',
       secondary: '#666666',
-      light: '#999999'
     },
     background: {
-      primary: '#ffffff',
-      secondary: '#f7f7f7'
+      primary: '#FFFFFF',
+      secondary: '#F5F5F5',
     },
-    divider: '#e5e7eb'
+    divider: '#E5E7EB',
+    accent: '#0070f3',
   },
   spacing: {
     xs: 4,
     sm: 8,
-    md: 16,
-    lg: 24,
-    xl: 32,
-    xxl: 48
-  }
+    md: 12,
+    lg: 16,
+    xl: 24,
+  },
 }
 
-export const sharedStyles = {
-  sectionDivider: {
-    height: 1,
-    backgroundColor: pdfTheme.colors.divider,
-    marginVertical: pdfTheme.spacing.lg,
+export const sharedStyles = StyleSheet.create({
+  textRegular: {
+    fontSize: 12,
+    fontWeight: 'normal' as const,
+  },
+  textSmall: {
+    fontSize: 10,
+    fontWeight: 'normal' as const,
   },
   pageTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: 'bold' as const,
     color: pdfTheme.colors.text.primary,
-    marginBottom: pdfTheme.spacing.md,
+    marginBottom: pdfTheme.spacing.lg,
   },
   sectionTitle: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: 'bold' as const,
     color: pdfTheme.colors.text.primary,
     marginBottom: pdfTheme.spacing.sm,
   },
-  text: {
-    regular: {
-      fontSize: 12,
-      color: pdfTheme.colors.text.secondary,
-    },
-    small: {
-      fontSize: 10,
-      color: pdfTheme.colors.text.light,
-    }
-  }
-} 
+}) 

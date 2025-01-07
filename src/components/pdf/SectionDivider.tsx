@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: pdfTheme.colors.divider,
   },
-  accent: {
+  dot: {
     width: 50,
     height: 2,
     backgroundColor: pdfTheme.colors.accent,
@@ -25,7 +25,7 @@ export function SectionDivider() {
   return (
     <View style={styles.container}>
       <View style={styles.line} />
-      <View style={styles.accent} />
+      <View style={styles.dot} />
       <View style={styles.line} />
     </View>
   )
