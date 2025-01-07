@@ -8,6 +8,20 @@ interface TechnicalDrawing {
   }
 }
 
+interface ProjectSection {
+  title: string
+  content: string
+}
+
+interface ImageGroup {
+  layout: 'stack' | 'row'  // stack = vertical, row = horizontal
+  images: {
+    url: string
+    alt: string
+    caption: string
+  }[]
+}
+
 export interface Project {
   id: string
   title: string
@@ -15,63 +29,73 @@ export interface Project {
   location: string
   year: string
   description: string
-  challenge: string
-  solution: string
+  sections?: ProjectSection[]
   services: string[]
-  images: {
-    url: string
-    alt: string
-    caption: string
-  }[]
+  imageGroups: ImageGroup[]  // Replace images with imageGroups
   technicalDrawings?: TechnicalDrawing[]
 }
 
 export const projects: Record<string, Project> = {
-  'modern-family-home': {
-    id: 'modern-family-home',
-    title: "Modern Family Home",
-    category: "Residential",
-    location: "Toronto, ON",
-    year: "2023",
+  'school-projects': {
+    id: 'school-projects',
+    title: "School Projects",
+    category: "Student Work",
+    location: "Baton Rouge, LA",
+    year: "2018 - 2023",
     description: `
-      A custom home design featuring sustainable elements and innovative space utilization for a growing family. 
-      This project showcases modern architectural drafting techniques while maintaining practical living spaces.
+      A collection of LSU architectural projects showcasing skills learned in the classroom.
     `,
-    challenge: `
-      The main challenge was to maximize living space on a compact urban lot while ensuring 
-      natural light and maintaining privacy from neighboring properties.
-    `,
-    solution: `
-      By implementing strategic window placement and an open-concept design, we created bright, 
-      flowing spaces that feel larger than their actual square footage. The final drawings 
-      included detailed specifications for energy-efficient materials and smart home integration.
-    `,
+    sections: [
+      {
+        title: "Project Goals",
+        content: "To demonstrate proficiency in architectural drafting and design principles..."
+      },
+      {
+        title: "Learning Outcomes",
+        content: "Successfully implemented various drafting techniques and software tools..."
+      }
+    ],
     services: [
       "Complete architectural drawings",
       "Building permit documentation",
       "3D visualization",
       "Construction documentation"
     ],
-    images: [
+    imageGroups: [
       {
-        url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
-        alt: "Modern Family Home Exterior",
-        caption: "Front elevation showing modern architectural elements"
+        layout: 'stack',
+        images: [
+          {
+            url: "/images/school-projects/facade.jpg",
+            alt: "Modern Family Home Exterior",
+            caption: "Front elevation showing modern architectural elements"
+          }
+        ]
       },
       {
-        url: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3",
-        alt: "Living Room Design",
-        caption: "Open concept living space with natural light"
-      },
-      {
-        url: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0",
-        alt: "Kitchen Layout",
-        caption: "Modern kitchen with efficient workflow design"
+        layout: 'row',
+        images: [
+          {
+            url: "/images/school-projects/1.jpg",
+            alt: "Living Room Design",
+            caption: "Open concept living space"
+          },
+          {
+            url: "/images/school-projects/2.jpg",
+            alt: "Kitchen Layout",
+            caption: "Modern kitchen design"
+          },
+          {
+            url: "/images/school-projects/3.jpg",
+            alt: "Dining Area",
+            caption: "Connected dining space"
+          }
+        ]
       }
     ],
     technicalDrawings: [
       {
-        url: "https://images.unsplash.com/photo-1574359411659-15573a27fd0c",
+        url: "/images/school-projects/birdy-bitch.jpg",
         title: "Foundation Plan"
       }
     ]
@@ -83,24 +107,37 @@ export const projects: Record<string, Project> = {
     location: "Vancouver, BC",
     year: "2023",
     description: "A modern retail space design that maximizes product display while maintaining an inviting atmosphere.",
-    challenge: "Creating an efficient flow pattern while maximizing display space in a narrow storefront.",
-    solution: "Innovative layout design with modular display units and strategic lighting placement to create distinct zones.",
+    sections: [
+      {
+        title: "Challenge",
+        content: "Creating an efficient flow pattern while maximizing display space in a narrow storefront."
+      },
+      {
+        title: "Solution",
+        content: "Innovative layout design with modular display units and strategic lighting placement to create distinct zones."
+      }
+    ],
     services: [
       "Space planning",
       "Interior elevations",
       "Lighting design",
       "Permit drawings"
     ],
-    images: [
+    imageGroups: [
       {
-        url: "https://images.unsplash.com/photo-1604014237800-1c9102c219da",
-        alt: "Retail Space Interior",
-        caption: "Modern retail interior with optimal flow"
-      },
-      {
-        url: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5",
-        alt: "Display Area",
-        caption: "Custom display solutions"
+        layout: 'row',
+        images: [
+          {
+            url: "https://images.unsplash.com/photo-1604014237800-1c9102c219da",
+            alt: "Retail Space Interior",
+            caption: "Modern retail interior with optimal flow"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5",
+            alt: "Display Area",
+            caption: "Custom display solutions"
+          }
+        ]
       }
     ]
   },
@@ -111,24 +148,37 @@ export const projects: Record<string, Project> = {
     location: "Montreal, QC",
     year: "2023",
     description: "Careful renovation of a 1920s heritage home, preserving historical elements while adding modern amenities.",
-    challenge: "Integrating modern systems while preserving historical architectural details.",
-    solution: "Detailed documentation of heritage elements and creative solutions for modern integration.",
+    sections: [
+      {
+        title: "Challenge",
+        content: "Integrating modern systems while preserving historical architectural details."
+      },
+      {
+        title: "Solution",
+        content: "Detailed documentation of heritage elements and creative solutions for modern integration."
+      }
+    ],
     services: [
       "As-built documentation",
       "Heritage conservation plans",
       "Renovation drawings",
       "Building permit applications"
     ],
-    images: [
+    imageGroups: [
       {
-        url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
-        alt: "Heritage Home Exterior",
-        caption: "Preserved historical facade"
-      },
-      {
-        url: "https://images.unsplash.com/photo-1600573472592-401b489a3cdc",
-        alt: "Interior Details",
-        caption: "Original moldings and modern updates"
+        layout: 'row',
+        images: [
+          {
+            url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+            alt: "Heritage Home Exterior",
+            caption: "Preserved historical facade"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1600573472592-401b489a3cdc",
+            alt: "Interior Details",
+            caption: "Original moldings and modern updates"
+          }
+        ]
       }
     ]
   },
@@ -139,24 +189,37 @@ export const projects: Record<string, Project> = {
     location: "Calgary, AB",
     year: "2023",
     description: "Modern office space redesign focusing on collaboration and flexibility.",
-    challenge: "Converting traditional office layout to a hybrid-friendly workspace.",
-    solution: "Flexible floor plan with modular furniture systems and tech-enabled meeting spaces.",
+    sections: [
+      {
+        title: "Challenge",
+        content: "Converting traditional office layout to a hybrid-friendly workspace."
+      },
+      {
+        title: "Solution",
+        content: "Flexible floor plan with modular furniture systems and tech-enabled meeting spaces."
+      }
+    ],
     services: [
       "Space planning",
       "Construction documents",
       "Furniture layouts",
       "Technical specifications"
     ],
-    images: [
+    imageGroups: [
       {
-        url: "https://images.unsplash.com/photo-1497366216548-37526070297c",
-        alt: "Office Interior",
-        caption: "Modern collaborative workspace"
-      },
-      {
-        url: "https://images.unsplash.com/photo-1497366811353-6870744d04b2",
-        alt: "Meeting Area",
-        caption: "Tech-enabled meeting space"
+        layout: 'row',
+        images: [
+          {
+            url: "https://images.unsplash.com/photo-1497366216548-37526070297c",
+            alt: "Office Interior",
+            caption: "Modern collaborative workspace"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1497366811353-6870744d04b2",
+            alt: "Meeting Area",
+            caption: "Tech-enabled meeting space"
+          }
+        ]
       }
     ]
   },
@@ -167,24 +230,37 @@ export const projects: Record<string, Project> = {
     location: "Edmonton, AB",
     year: "2023",
     description: "Comprehensive as-built documentation for an existing manufacturing facility.",
-    challenge: "Accurate measurement and documentation of complex industrial systems.",
-    solution: "Detailed technical drawings with comprehensive annotations and specifications.",
+    sections: [
+      {
+        title: "Challenge",
+        content: "Accurate measurement and documentation of complex industrial systems."
+      },
+      {
+        title: "Solution",
+        content: "Detailed technical drawings with comprehensive annotations and specifications."
+      }
+    ],
     services: [
       "As-built documentation",
       "System diagrams",
       "Technical specifications",
       "Code compliance review"
     ],
-    images: [
+    imageGroups: [
       {
-        url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
-        alt: "Technical Drawing",
-        caption: "Detailed technical documentation"
-      },
-      {
-        url: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0",
-        alt: "Facility Layout",
-        caption: "Comprehensive facility documentation"
+        layout: 'row',
+        images: [
+          {
+            url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+            alt: "Technical Drawing",
+            caption: "Detailed technical documentation"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0",
+            alt: "Facility Layout",
+            caption: "Comprehensive facility documentation"
+          }
+        ]
       }
     ]
   },
@@ -195,24 +271,37 @@ export const projects: Record<string, Project> = {
     location: "Victoria, BC",
     year: "2024",
     description: "Energy-efficient home design incorporating sustainable materials and passive solar principles.",
-    challenge: "Balancing energy efficiency with aesthetic appeal and budget constraints.",
-    solution: "Innovative use of sustainable materials and smart home technology integration.",
+    sections: [
+      {
+        title: "Challenge",
+        content: "Balancing energy efficiency with aesthetic appeal and budget constraints."
+      },
+      {
+        title: "Solution",
+        content: "Innovative use of sustainable materials and smart home technology integration."
+      }
+    ],
     services: [
       "Sustainable design documentation",
       "Energy modeling coordination",
       "Construction documents",
       "Green building certification"
     ],
-    images: [
+    imageGroups: [
       {
-        url: "https://images.unsplash.com/photo-1523217582562-09d0def993a6",
-        alt: "Sustainable Home",
-        caption: "Eco-friendly home design"
-      },
-      {
-        url: "https://images.unsplash.com/photo-1600585152915-d208bec867a1",
-        alt: "Solar Integration",
-        caption: "Integrated solar solutions"
+        layout: 'row',
+        images: [
+          {
+            url: "https://images.unsplash.com/photo-1523217582562-09d0def993a6",
+            alt: "Sustainable Home",
+            caption: "Eco-friendly home design"
+          },
+          {
+            url: "https://images.unsplash.com/photo-1600585152915-d208bec867a1",
+            alt: "Solar Integration",
+            caption: "Integrated solar solutions"
+          }
+        ]
       }
     ],
     technicalDrawings: [

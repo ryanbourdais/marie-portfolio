@@ -12,39 +12,47 @@ interface ProjectCardProps {
   title: string
   category: string
   description: string
-  images: {
-    url: string
-    alt: string
+  imageGroups: {
+    layout: 'stack' | 'row'
+    images: {
+      url: string
+      alt: string
+    }[]
   }[]
 }
 
-const ProjectCard = ({ title, category, description, id, images }: ProjectCardProps) => (
-  <motion.div
-    layout
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: 20 }}
-    transition={{ duration: 0.3 }}
-    className="group cursor-pointer"
-  >
-    <Link href={`/projects/${id}`}>
-      <div className="relative h-[300px] overflow-hidden rounded-lg mb-4">
-        <Image
-          src={images[0].url}
-          alt={images[0].alt}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 p-4">
-          <p className="text-sm text-white/80 mb-1">{category}</p>
-          <h3 className="text-xl font-bold text-white">{title}</h3>
+const ProjectCard = ({ title, category, description, id, imageGroups }: ProjectCardProps) => {
+  // Get the first image from the first image group
+  const thumbnailImage = imageGroups[0]?.images[0]
+
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      transition={{ duration: 0.3 }}
+      className="group cursor-pointer"
+    >
+      <Link href={`/projects/${id}`}>
+        <div className="relative h-[300px] overflow-hidden rounded-lg mb-4">
+          <Image
+            src={thumbnailImage?.url || ''}
+            alt={thumbnailImage?.alt || title}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-4">
+            <p className="text-sm text-white/80 mb-1">{category}</p>
+            <h3 className="text-xl font-bold text-white">{title}</h3>
+          </div>
         </div>
-      </div>
-      <p className="text-gray-600 line-clamp-2">{description}</p>
-    </Link>
-  </motion.div>
-)
+        <p className="text-gray-600 line-clamp-2">{description}</p>
+      </Link>
+    </motion.div>
+  )
+}
 
 type SortOption = 'newest' | 'oldest' | 'title' | 'location'
 
@@ -97,7 +105,7 @@ export default function ProjectsPage() {
         animate={{ opacity: 1, y: 0 }}
         className="bg-accent text-white py-20"
       >
-        <div className="container mx-auto px-4">
+        <div className="w-[95%] mx-auto">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             My Projects
           </h1>
@@ -114,7 +122,7 @@ export default function ProjectsPage() {
         transition={{ delay: 0.2 }}
         className="py-8 border-b"
       >
-        <div className="container mx-auto px-4">
+        <div className="w-[95%] mx-auto">
           <div className="flex flex-col md:flex-row md:items-center gap-4">
             {/* Categories */}
             <div className="flex items-center gap-4 overflow-x-auto pb-4 md:pb-0 flex-grow">
@@ -183,7 +191,7 @@ export default function ProjectsPage() {
         transition={{ delay: 0.4 }}
         className="py-12"
       >
-        <div className="container mx-auto px-4">
+        <div className="w-[95%] mx-auto">
           <AnimatePresence mode="popLayout">
             {sortedProjects.length > 0 ? (
               <motion.div
@@ -193,7 +201,11 @@ export default function ProjectsPage() {
                 {sortedProjects.map((project) => (
                   <ProjectCard
                     key={project.id}
-                    {...project}
+                    id={project.id}
+                    title={project.title}
+                    category={project.category}
+                    description={project.description}
+                    imageGroups={project.imageGroups}
                   />
                 ))}
               </motion.div>

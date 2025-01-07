@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { Lightbox } from '@/app/components/ui/lightbox'
 import { DrawingViewer } from '@/app/components/ui/drawing-viewer'
 import { Project } from '@/data/projects'
+import { cn } from '@/lib/utils'
 
 interface ProjectContentProps {
   project: Project
@@ -16,10 +17,23 @@ export function ProjectContent({ project }: ProjectContentProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [initialImageIndex, setInitialImageIndex] = useState(0)
 
-  const openLightbox = (index: number) => {
-    setInitialImageIndex(index)
+  // Pre-calculate flattened images array for consistent indexing
+  const allImages = project.imageGroups.flatMap(group => group.images)
+
+  const openLightbox = (groupIndex: number, imageIndex: number) => {
+    // Simpler index calculation
+    let absoluteIndex = 0
+    for (let i = 0; i < groupIndex; i++) {
+      absoluteIndex += project.imageGroups[i].images.length
+    }
+    absoluteIndex += imageIndex
+    
+    setInitialImageIndex(absoluteIndex)
     setLightboxOpen(true)
   }
+
+  // Get the first image from the first image group for the hero
+  const heroImage = project.imageGroups[0]?.images[0]
 
   return (
     <div className="pt-20">
@@ -37,8 +51,8 @@ export function ProjectContent({ project }: ProjectContentProps) {
       {/* Hero */}
       <div className="relative h-[60vh] bg-gray-100">
         <Image
-          src={project.images[0].url}
-          alt={project.images[0].alt}
+          src={heroImage?.url || ''}  // Add fallback empty string
+          alt={heroImage?.alt || project.title}  // Fallback to project title
           fill
           className="object-cover"
           priority
@@ -62,90 +76,80 @@ export function ProjectContent({ project }: ProjectContentProps) {
 
       {/* Content */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-3 gap-12">
-          {/* Main Content */}
-          <div className="md:col-span-2 space-y-8">
-            <section>
-              <h2 className="text-2xl font-bold mb-4">Project Overview</h2>
-              <p className="text-gray-600">{project.description}</p>
-            </section>
+        <div className="max-w-4xl mx-auto space-y-8">
+          <section>
+            <h2 className="text-2xl font-bold mb-4">Project Overview</h2>
+            <p className="text-gray-600">{project.description}</p>
+          </section>
 
-            <section>
-              <h2 className="text-2xl font-bold mb-4">The Challenge</h2>
-              <p className="text-gray-600">{project.challenge}</p>
+          {project.sections?.map((section, index) => (
+            <section key={index}>
+              <h2 className="text-2xl font-bold mb-4">{section.title}</h2>
+              <p className="text-gray-600">{section.content}</p>
             </section>
+          ))}
 
-            <section>
-              <h2 className="text-2xl font-bold mb-4">The Solution</h2>
-              <p className="text-gray-600">{project.solution}</p>
-            </section>
-
-            {/* Image Gallery */}
-            <section className="space-y-4">
-              {project.images.map((image, index) => (
-                <figure 
-                  key={index} 
-                  className="space-y-2 cursor-zoom-in"
-                  onClick={() => openLightbox(index)}
-                >
-                  <div className="relative h-[400px] bg-gray-100">
-                    <Image
-                      src={image.url}
-                      alt={image.alt}
-                      fill
-                      className="object-cover hover:opacity-90 transition-opacity"
-                    />
-                  </div>
-                  <figcaption className="text-sm text-gray-500">
-                    {image.caption}
-                  </figcaption>
-                </figure>
-              ))}
-            </section>
-
-            {project.technicalDrawings && (
-              <section>
-                <h2 className="text-2xl font-bold mb-4">Technical Drawings</h2>
-                <div className="space-y-8">
-                  {project.technicalDrawings.map((drawing, index) => (
-                    <div key={index} className="space-y-4">
-                      <h3 className="text-xl font-semibold">{drawing.title}</h3>
-                      <DrawingViewer
-                        imageUrl={drawing.url}
-                        title={drawing.title}
-                        onDownload={() => window.open(drawing.url, '_blank')}
+          {/* Image Gallery */}
+          <section className="space-y-8">
+            {project.imageGroups.map((group, groupIndex) => (
+              <div 
+                key={groupIndex} 
+                className={cn(
+                  "space-y-4",
+                  group.layout === 'row' && "space-y-0 grid grid-cols-2 md:grid-cols-3 gap-4"
+                )}
+              >
+                {group.images.map((image, imageIndex) => (
+                  <figure 
+                    key={imageIndex} 
+                    className={cn(
+                      "cursor-zoom-in",
+                      group.layout === 'stack' ? "space-y-2" : "space-y-1"
+                    )}
+                    onClick={() => openLightbox(groupIndex, imageIndex)}
+                  >
+                    <div className={cn(
+                      "relative bg-gray-100",
+                      group.layout === 'stack' ? "h-[400px]" : "aspect-[2/3]"
+                    )}>
+                      <Image
+                        src={image.url}
+                        alt={image.alt}
+                        fill
+                        className="object-cover hover:opacity-90 transition-opacity"
                       />
                     </div>
-                  ))}
-                </div>
-              </section>
-            )}
-          </div>
-
-          {/* Sidebar */}
-          <div className="space-y-8">
-            <section>
-              <h3 className="text-lg font-bold mb-4">Services Provided</h3>
-              <ul className="space-y-2">
-                {project.services.map((service, index) => (
-                  <li key={index} className="text-gray-600">
-                    • {service}
-                  </li>
+                    <figcaption className="text-sm text-gray-500">
+                      {image.caption}
+                    </figcaption>
+                  </figure>
                 ))}
-              </ul>
-            </section>
+              </div>
+            ))}
+          </section>
 
-            <Button asChild className="w-full">
-              <Link href="/contact">
-                Discuss Your Project
-              </Link>
-            </Button>
-          </div>
+          {project.technicalDrawings && (
+            <section>
+              <h2 className="text-2xl font-bold mb-4">Technical Drawings</h2>
+              <div className="space-y-8">
+                {project.technicalDrawings.map((drawing, index) => (
+                  <div key={index} className="space-y-4">
+                    <h3 className="text-xl font-semibold">{drawing.title}</h3>
+                    <DrawingViewer
+                      imageUrl={drawing.url}
+                      title={drawing.title}
+                      onDownload={() => window.open(drawing.url, '_blank')}
+                    />
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </div>
 
       <Lightbox
-        images={project.images}
+        images={allImages}
         initialIndex={initialImageIndex}
         isOpen={lightboxOpen}
         onClose={() => setLightboxOpen(false)}
