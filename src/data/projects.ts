@@ -1,3 +1,13 @@
+interface TechnicalDrawing {
+  url: string
+  title: string
+  measurements?: {
+    width?: string
+    height?: string
+    scale?: string
+  }
+}
+
 export interface Project {
   id: string
   title: string
@@ -11,12 +21,9 @@ export interface Project {
   images: {
     url: string
     alt: string
-    caption?: string
+    caption: string
   }[]
-  technicalDrawings?: {
-    url: string
-    title: string
-  }[]
+  technicalDrawings?: TechnicalDrawing[]
 }
 
 export const projects: Record<string, Project> = {

@@ -1,8 +1,15 @@
-<!-- Add this hidden form -->
-<form name="contact" netlify netlify-honeypot="bot-field" hidden>
-  <input type="text" name="name" />
-  <input type="email" name="email" />
-  <input type="tel" name="phone" />
-  <input type="text" name="position" />
-  <textarea name="message"></textarea>
-</form> 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <!-- Hidden form for Netlify -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="subject" />
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html> 
