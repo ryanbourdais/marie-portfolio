@@ -120,7 +120,6 @@ export default function ProjectPage({ params }: PageProps) {
                       <DrawingViewer
                         imageUrl={drawing.url}
                         title={drawing.title}
-                        measurements={drawing.measurements}
                         onDownload={() => window.open(drawing.url, '_blank')}
                       />
                     </div>
