@@ -10,6 +10,48 @@ export const siteConfig = {
   social: {
     linkedin: "https://linkedin.com/in/mariefrench",
     instagram: "https://instagram.com/mariefrench.drafting"
+  },
+  skills: {
+    title: "Skills & Expertise",
+    subtitle: "Comprehensive technical and design capabilities in architectural drafting",
+    sections: {
+      technical: "Technical Proficiencies"
+    },
+    categories: {
+      software: {
+        title: "Software Expertise",
+        items: [
+          "AutoCAD",
+          "Revit",
+          "SketchUp",
+          "Adobe Creative Suite",
+          "Blender",
+          "3ds Max"
+        ]
+      },
+      technical: {
+        title: "Technical Skills",
+        items: [
+          "Construction Documentation",
+          "Building Code Compliance",
+          "3D Modeling",
+          "Permit Documentation",
+          "Technical Specifications",
+          "As-Built Documentation"
+        ]
+      },
+      design: {
+        title: "Design Capabilities",
+        items: [
+          "Space Planning",
+          "Sustainable Design",
+          "Interior Design",
+          "Site Planning",
+          "Accessibility Design",
+          "Renovation Planning"
+        ]
+      }
+    }
   }
 }
 

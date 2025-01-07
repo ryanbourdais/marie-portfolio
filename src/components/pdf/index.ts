@@ -1,0 +1,6 @@
+export * from './Cover'
+export * from './Portfolio'
+export * from './ProjectPage'
+export * from './SkillsPage'
+export * from './ContactPage'
+export * from './TableOfContents' 
