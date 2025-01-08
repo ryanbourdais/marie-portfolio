@@ -134,7 +134,7 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </div>
-
+{/* test */}
       <AvailabilityIndicator className="mt-8" />
 
       <ServiceArea />
