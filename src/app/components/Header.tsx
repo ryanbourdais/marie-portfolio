@@ -3,6 +3,11 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import { MobileNav } from './MobileNav'
+import dynamic from 'next/dynamic'
+
+const DownloadButton = dynamic(() => import('./pdf/DownloadButton'), {
+  ssr: false,
+})
 
 const navItems = [
   { href: '/', label: 'Home' },
@@ -39,6 +44,7 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
+            <DownloadButton />
             <Link
               href="/contact"
               className="bg-accent text-white px-4 py-2 rounded-md hover:bg-accent/90"

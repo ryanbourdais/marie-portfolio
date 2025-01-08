@@ -322,5 +322,5 @@ export const getProject = (slug: string): Project | undefined => {
 }
 
 export const getAllProjects = (): Project[] => {
-  return Object.values(projects)
+  return Object.values(projects);
 } 
