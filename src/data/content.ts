@@ -15,8 +15,8 @@ export const siteConfig = {
 
 export const heroContent = {
   title: "Hi, I'm Marie French",
-  subtitle: "Architectural Draftsman specializing in bringing your residential and commercial design visions to life with precision and creativity.",
-  backgroundImage: "https://images.unsplash.com/photo-1487958449943-2429e8be8625",
+  subtitle: "Designing with passion and growing with every project",
+  backgroundImage: "/images/heros/home_hero.jpeg",
   buttons: {
     primary: "View My Work",
     secondary: "Get in Touch"

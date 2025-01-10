@@ -12,7 +12,7 @@ export default function Hero() {
             src={heroContent.backgroundImage}
             alt="Featured architectural project"
             fill
-            className="object-cover"
+            className="object-cover object-[center_40%] w-full"
             priority
             quality={90}
           />
@@ -39,13 +39,13 @@ export default function Hero() {
                 </Button>
               </Link>
               <Link href="/contact">
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="text-white border-white hover:bg-white/10"
-              >
-                {heroContent.buttons.secondary}
-              </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="text-white border-white hover:bg-white/10"
+                >
+                  {heroContent.buttons.secondary}
+                </Button>
               </Link>
             </div>
           </div>

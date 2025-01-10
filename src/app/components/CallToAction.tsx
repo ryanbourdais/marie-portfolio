@@ -7,20 +7,20 @@ export default function CallToAction() {
     {
       icon: <Mail className="w-5 h-5" />,
       label: "Email",
-      value: "marie.french@example.com",
-      href: "mailto:marie.french@example.com"
+      value: "frenchmarie10@gmail.com",
+      href: "mailto:frenchmarie10@gmail.com"
     },
     {
       icon: <Phone className="w-5 h-5" />,
       label: "Phone",
-      value: "(555) 123-4567",
-      href: "tel:+15551234567"
+      value: "(225) 202-8227",
+      href: "tel:+12252028227"
     },
     {
       icon: <MapPin className="w-5 h-5" />,
       label: "Location",
-      value: "Greater Toronto Area, ON",
-      href: "https://maps.google.com/?q=Toronto,ON"
+      value: "Greater New Orleans Area, LA",
+      href: "https://maps.google.com/?q=New_Orleans,LA"
     }
   ]
 
@@ -29,10 +29,10 @@ export default function CallToAction() {
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Bring Your Vision to Life?
+            Looking for an Experienced Draftsman?
           </h2>
           <p className="text-xl mb-8 text-white/90">
-            Let's discuss your project and create exceptional architectural drawings together
+            Let's connect and discuss how my drafting expertise can bring value to your next project
           </p>
           
           <div className="flex flex-wrap justify-center gap-8 mb-12">

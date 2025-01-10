@@ -25,7 +25,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="text-xl font-bold">
-            Marie French
+            Marie French Portfolio
           </Link>
 
           {/* Desktop Navigation */}

@@ -6,22 +6,41 @@ interface SkillCategoryProps {
     name: string
     proficiency?: number
   }[]
+  isLastColumn?: boolean
+  showCheckmarks?: boolean
+  isCentered?: boolean
 }
 
-const SkillCategory = ({ title, skills }: SkillCategoryProps) => (
-  <div className="space-y-4">
-    <h3 className="text-xl font-bold text-gray-800">{title}</h3>
+const SkillCategory = ({ title, skills, isLastColumn, showCheckmarks, isCentered }: SkillCategoryProps) => (
+  <div className={`space-y-4 ${isLastColumn ? 'lg:text-right' : ''}`}>
+    <h3 className={`text-xl font-bold text-gray-800 ${isCentered ? 'text-center' : ''}`}>{title}</h3>
     <div className="space-y-3">
       {skills.map((skill, index) => (
-        <div key={index} className="flex items-center gap-2">
-          <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />
-          <span className="text-gray-600 w-48">{skill.name}</span>
-          {skill.proficiency && (
-            <div className="w-48 h-2 bg-gray-200 rounded-full">
-              <div 
-                className="h-full bg-accent rounded-full"
-                style={{ width: `${(skill.proficiency / 10) * 100}%` }}
-              />
+        <div key={index} className={`relative flex ${isCentered ? 'justify-center' : isLastColumn ? 'justify-end' : ''}`}>
+          {isLastColumn ? (
+            // Right column layout
+            <div className="flex items-center gap-6">
+              <span className="text-gray-600 text-right w-56 whitespace-nowrap pr-2">{skill.name}</span>
+              <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />
+            </div>
+          ) : isCentered ? (
+            // Center column layout
+            <div className="flex items-center gap-4">
+              <span className="text-gray-600 w-32 whitespace-nowrap">{skill.name}</span>
+              {skill.proficiency && (
+                <div className="w-32 h-2 bg-gray-200 rounded-full">
+                  <div 
+                    className="h-full bg-accent rounded-full"
+                    style={{ width: `${(skill.proficiency / 10) * 100}%` }}
+                  />
+                </div>
+              )}
+            </div>
+          ) : (
+            // Left column layout
+            <div className="flex items-center gap-6">
+              <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />
+              <span className="text-gray-600 w-56 whitespace-nowrap pl-2">{skill.name}</span>
             </div>
           )}
         </div>
@@ -33,30 +52,34 @@ const SkillCategory = ({ title, skills }: SkillCategoryProps) => (
 export default function Skills() {
   const skillCategories = [
     {
-      title: "Software Proficiency",
-      skills: [
-        { name: "AutoCAD", proficiency: 9 },
-        { name: "Revit", proficiency: 8 },
-        { name: "SketchUp", proficiency: 8 },
-        { name: "Adobe Creative Suite", proficiency: 7 }
-      ]
-    },
-    {
       title: "Technical Skills",
       skills: [
-        { name: "Construction Documentation" },
-        { name: "Building Code Analysis" },
-        { name: "Site Planning" },
-        { name: "3D Modeling" }
+        { name: "V-Ray Rendering" },
+        { name: "Enscape Visualization" },
+        { name: "Revit Rendering" },
+        { name: "Custom Millwork Design" },
+        { name: "3D Printing" },
+        { name: "CNC Work" }
       ]
     },
     {
-      title: "Professional Expertise",
+      title: "Software Proficiency",
       skills: [
-        { name: "Residential Design" },
-        { name: "Commercial Planning" },
-        { name: "Permit Documentation" },
-        { name: "As-Built Documentation" }
+        { name: "Revit", proficiency: 9 },
+        { name: "Rhino", proficiency: 8 },
+        { name: "Adobe Suite", proficiency: 8 },
+        { name: "AutoCAD", proficiency: 5 }
+      ]
+    },
+    {
+      title: "Professional Skills",
+      skills: [
+        { name: "Project Management" },
+        { name: "Construction Documentation" },
+        { name: "Client Coordination" },
+        { name: "Technical Writing" },
+        { name: "Presentation Development" },
+        { name: "Permitting Documentation" }
       ]
     }
   ]
@@ -79,6 +102,9 @@ export default function Skills() {
               key={index}
               title={category.title}
               skills={category.skills}
+              isLastColumn={index === skillCategories.length - 1}
+              showCheckmarks={index !== 1}
+              isCentered={index === 1}
             />
           ))}
         </div>
