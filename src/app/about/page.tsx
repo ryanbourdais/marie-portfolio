@@ -21,10 +21,11 @@ export default function AboutPage() {
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             About Me
           </h1>
-          <p className="text-xl text-white/90 max-w-2xl">
-            Architectural draftsperson with a passion for creating detailed, precise, 
-            and innovative technical drawings.
-          </p>
+          {/* <p className="text-xl text-white/90 max-w-2xl">
+            An architectural draftswoman with a passion for creating functional, innovative designs 
+            through detailed drafting and thoughtful project coordination. My architectural expertise 
+            is complemented by specialized knowledge in architectural history and effective communication.
+          </p> */}
         </div>
       </motion.section>
 
@@ -40,10 +41,8 @@ export default function AboutPage() {
             >
               <h2 className="text-2xl font-bold mb-4">Professional Background</h2>
               <p className="text-gray-600">
-                With over 8 years of experience in architectural drafting, I specialize in 
-                creating precise technical drawings for residential and commercial projects. 
-                My expertise includes using industry-standard software to produce detailed 
-                construction documents, permit drawings, and 3D visualizations.
+              With a Bachelor's degree in Architecture from Louisiana State University and specialized minors in Architectural History and Communication Studies, I bring a unique blend of technical expertise and effective communication to every project. My professional journey spans both commercial and residential projects, where I've honed my skills in architectural drafting, project coordination, and client collaboration. I specialize in creating detailed construction documents, 3D visualizations, and permit drawings that bring architectural visions to life. My passion lies in developing innovative solutions that not only meet technical requirements but also enhance the functionality and aesthetic appeal of each space. Whether working on custom homes, commercial spaces, or renovation projects, I maintain unwavering attention to detail and a commitment to exceeding client expectations.
+
               </p>
             </motion.section>
 
@@ -56,46 +55,105 @@ export default function AboutPage() {
             >
               <h2 className="text-2xl font-bold">Technical Skills</h2>
               <div className="grid grid-cols-2 gap-6">
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="font-semibold mb-4">Architectural Software</h3>
+                    <ul className="space-y-2 text-gray-600">
+                      <li>• Revit</li>
+                      <li>• Rhino</li>
+                      <li>• AutoCAD</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-4">3D Visualization</h3>
+                    <ul className="space-y-2 text-gray-600">
+                      <li>• V-Ray</li>
+                      <li>• Enscape</li>
+                      <li>• Revit Rendering</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="font-semibold mb-4">Design & Rendering</h3>
+                    <ul className="space-y-2 text-gray-600">
+                      <li>• Adobe Photoshop</li>
+                      <li>• Adobe Illustrator</li>
+                      <li>• Adobe InDesign</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-4">Custom Millwork Design</h3>
+                    <ul className="space-y-2 text-gray-600">
+                      <li>• Concept Development</li>
+                      <li>• 3D Printing</li>
+                      <li>• CNC Work</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </motion.section>
+
+            {/* Professional Skills */}
+            <motion.section
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.35 }}
+              className="space-y-6"
+            >
+              <h2 className="text-2xl font-bold">Professional Skills</h2>
+              <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-semibold mb-4">Software Proficiency</h3>
+                  <h3 className="font-semibold mb-4">Project Management</h3>
                   <ul className="space-y-2 text-gray-600">
-                    <li>• AutoCAD</li>
-                    <li>• Revit</li>
-                    <li>• SketchUp</li>
-                    <li>• Adobe Creative Suite</li>
+                    <li>• Scheduling</li>
+                    <li>• Documentation</li>
+                    <li>• Construction Documents</li>
+                    <li>• Client Coordination</li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-4">Areas of Expertise</h3>
+                  <h3 className="font-semibold mb-4">Communication</h3>
                   <ul className="space-y-2 text-gray-600">
-                    <li>• Construction Documentation</li>
-                    <li>• Building Code Compliance</li>
-                    <li>• 3D Modeling</li>
-                    <li>• Permit Documentation</li>
+                    <li>• Presentation Development</li>
+                    <li>• Technical Writing</li>
+                    <li>• Permitting Documentation</li>
                   </ul>
                 </div>
               </div>
             </motion.section>
 
-            {/* Education & Certifications */}
+            {/* Awards & Achievements */}
             <motion.section
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              <h2 className="text-2xl font-bold mb-4">Education & Certifications</h2>
+              <h2 className="text-2xl font-bold mb-4">Awards & Achievements</h2>
               <ul className="space-y-4">
                 <li>
-                  <h3 className="font-semibold">Architectural Technology Diploma</h3>
-                  <p className="text-gray-600">College Name, 2015</p>
+                  <h3 className="font-semibold">Dean's List</h3>
+                  <p className="text-gray-600">Recognized for academic excellence in 2021 and 2022.</p>
                 </li>
                 <li>
-                  <h3 className="font-semibold">AutoCAD Professional Certification</h3>
-                  <p className="text-gray-600">Autodesk, 2016</p>
+                  <h3 className="font-semibold">LSU CXC Distinction</h3>
+                  <p className="text-gray-600">Honored for outstanding communication skills across disciplines.</p>
                 </li>
+              </ul>
+            </motion.section>
+
+            {/* Education */}
+            <motion.section
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.45 }}
+            >
+              <h2 className="text-2xl font-bold mb-4">Education</h2>
+              <ul className="space-y-4">
                 <li>
-                  <h3 className="font-semibold">Revit Architecture Certification</h3>
-                  <p className="text-gray-600">Autodesk, 2017</p>
+                  <h3 className="font-semibold">Bachelor's Degree in Architecture</h3>
+                  <p className="text-gray-600">Louisiana State University</p>
+                  <p className="text-gray-600 text-sm">Minors: Architectural History and Communication Studies</p>
                 </li>
               </ul>
             </motion.section>
@@ -115,8 +173,8 @@ export default function AboutPage() {
             <div className="bg-gray-50 p-6 rounded-lg space-y-6">
               <h3 className="font-semibold">Contact Information</h3>
               <div className="space-y-4">
-                <p className="text-gray-600">Based in Toronto, ON</p>
-                <p className="text-gray-600">Available for projects across Canada</p>
+                <p className="text-gray-600">Based in New Orleans, LA</p>
+                <p className="text-gray-600">Available for projects across America</p>
               </div>
               <div className="space-y-3">
                 <Button asChild className="w-full">

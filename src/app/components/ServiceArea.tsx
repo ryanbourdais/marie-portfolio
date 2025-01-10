@@ -4,22 +4,22 @@ import { MapPin, Globe, Car } from 'lucide-react'
 
 const locations = [
   {
-    city: "Toronto",
-    province: "ON",
+    city: "New Orleans",
+    province: "LA",
     type: "Current Location",
     info: "Immediately available",
     icon: MapPin,
   },
   {
-    city: "Greater Toronto Area",
-    province: "ON",
+    city: "Greater New Orleans Area",
+    province: "LA",
     type: "Preferred Area",
     info: "No relocation needed",
     icon: Car,
   },
   {
     city: "Remote Work",
-    province: "Canada-wide",
+    province: "America-wide",
     type: "Remote Options",
     info: "Open to remote positions",
     icon: Globe,
@@ -37,7 +37,7 @@ export function ServiceArea() {
         >
           <h2 className="text-3xl font-bold mb-4">Location Preferences</h2>
           <p className="text-gray-600">
-            Based in Toronto, open to opportunities in the GTA and remote positions across Canada.
+            Based in New Orleans, open to opportunities in the GNO and remote positions across America.
           </p>
         </motion.div>
 
