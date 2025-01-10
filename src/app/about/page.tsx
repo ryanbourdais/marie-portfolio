@@ -183,7 +183,20 @@ export default function AboutPage() {
                     Contact Me
                   </Link>
                 </Button>
-                <Button variant="outline" className="w-full">
+                <h3 className="font-semibold pt-4">Downloads</h3>
+                <Button 
+                  variant="outline" 
+                  className="w-full"
+                  onClick={() => window.open('/portfolio.pdf', '_blank')}
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Download Portfolio
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="w-full"
+                  onClick={() => window.open('/resume.pdf', '_blank')}
+                >
                   <Download className="w-4 h-4 mr-2" />
                   Download Resume
                 </Button>
