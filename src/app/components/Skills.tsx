@@ -19,8 +19,8 @@ const SkillCategory = ({ title, skills, isLastColumn, showCheckmarks, isCentered
         <div key={index} className={`relative flex ${isCentered ? 'justify-center' : isLastColumn ? 'lg:justify-end justify-center' : 'lg:justify-start justify-center'}`}>
           {isLastColumn ? (
             // Right column layout
-            <div className="flex items-center gap-6">
-              <span className="text-gray-600 text-right w-56 whitespace-nowrap pr-2">{skill.name}</span>
+            <div className="flex items-center gap-6 lg:flex-row flex-row-reverse">
+              <span className="text-gray-600 lg:text-right text-left w-56 whitespace-nowrap lg:pr-2 pl-2">{skill.name}</span>
               <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />
             </div>
           ) : isCentered ? (

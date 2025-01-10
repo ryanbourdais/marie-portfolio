@@ -16,24 +16,24 @@ const contactInfo = [
   {
     icon: <Mail className="w-6 h-6" />,
     label: "Email",
-    value: "marie.french@example.com",
-    href: "mailto:marie.french@example.com"
+    value: "frenchmarie10@gmail.com",
+    href: "mailto:frenchmarie10@gmail.com"
   },
   {
     icon: <Phone className="w-6 h-6" />,
     label: "Phone",
-    value: "(555) 123-4567",
-    href: "tel:+15551234567"
+    value: "(225) 202-8227",
+    href: "tel:+12252028227"
   },
   {
     icon: <MapPin className="w-6 h-6" />,
     label: "Location",
-    value: "Toronto, ON"
+    value: "New Orleans, LA"
   },
   {
     icon: <Clock className="w-6 h-6" />,
-    label: "Business Hours",
-    value: "Mon - Fri, 9am - 5pm EST"
+    label: "Available Hours",
+    value: "Mon - Fri, 9am - 5pm CST"
   }
 ]
 
@@ -77,7 +77,7 @@ export default function ContactPage() {
               Let's Work Together
             </h1>
             <p className="text-xl text-white/90">
-              Ready to bring your architectural vision to life? Get in touch to discuss your project.
+              Looking for an experienced architectural draftsperson? Let's discuss how I can contribute to your team.
             </p>
           </motion.div>
         </div>
@@ -188,7 +188,7 @@ export default function ContactPage() {
                     {...register('message', { required: 'Message is required' })}
                     rows={5}
                     className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow resize-none"
-                    placeholder="Tell me about your project..."
+                    placeholder="Leave me a message"
                   />
                   {errors.message && (
                     <p className="text-red-500 text-sm">{errors.message.message}</p>

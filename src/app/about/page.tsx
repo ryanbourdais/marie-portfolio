@@ -123,11 +123,27 @@ export default function AboutPage() {
               </div>
             </motion.section>
 
-            {/* Awards & Achievements */}
+            {/* Education */}
             <motion.section
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
+            >
+              <h2 className="text-2xl font-bold mb-4">Education</h2>
+              <ul className="space-y-4">
+                <li>
+                  <h3 className="font-semibold">Bachelor's Degree in Architecture</h3>
+                  <p className="text-gray-600">Louisiana State University</p>
+                  <p className="text-gray-600 text-sm">Minors: Architectural History and Communication Studies</p>
+                </li>
+              </ul>
+            </motion.section>
+
+            {/* Awards & Achievements */}
+            <motion.section
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.45 }}
             >
               <h2 className="text-2xl font-bold mb-4">Awards & Achievements</h2>
               <ul className="space-y-4">
@@ -138,22 +154,6 @@ export default function AboutPage() {
                 <li>
                   <h3 className="font-semibold">LSU CXC Distinction</h3>
                   <p className="text-gray-600">Honored for outstanding communication skills across disciplines.</p>
-                </li>
-              </ul>
-            </motion.section>
-
-            {/* Education */}
-            <motion.section
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.45 }}
-            >
-              <h2 className="text-2xl font-bold mb-4">Education</h2>
-              <ul className="space-y-4">
-                <li>
-                  <h3 className="font-semibold">Bachelor's Degree in Architecture</h3>
-                  <p className="text-gray-600">Louisiana State University</p>
-                  <p className="text-gray-600 text-sm">Minors: Architectural History and Communication Studies</p>
                 </li>
               </ul>
             </motion.section>
@@ -187,26 +187,27 @@ export default function AboutPage() {
                 <Button 
                   variant="outline" 
                   className="w-full"
-                  onClick={() => window.open('/portfolio.pdf', '_blank')}
-                >
-                  <Download className="w-4 h-4 mr-2" />
-                  Download Portfolio
-                </Button>
-                <Button 
-                  variant="outline" 
-                  className="w-full"
                   onClick={() => window.open('/resume.pdf', '_blank')}
                 >
                   <Download className="w-4 h-4 mr-2" />
                   Download Resume
                 </Button>
+                <Button 
+                  variant="outline" 
+                  className="w-full"
+                  onClick={() => window.open('/portfolio.pdf', '_blank')}
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Download Portfolio
+                </Button>
               </div>
             </div>
+
+            {/* Availability Status */}
+            <AvailabilityIndicator />
           </motion.div>
         </div>
       </div>
-{/* test */}
-      <AvailabilityIndicator className="mt-8" />
 
       <ServiceArea />
     </div>

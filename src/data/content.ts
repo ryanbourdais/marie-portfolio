@@ -2,9 +2,9 @@ export const siteConfig = {
   title: "Marie French | Architectural Draftsman",
   description: "Professional architectural drafting and design services by Marie French, specializing in residential and commercial projects.",
   contact: {
-    email: "marie.french@example.com",
-    phone: "(555) 123-4567",
-    location: "Toronto, ON",
+    email: "frenchmarie10@gmail.com",
+    phone: "(225) 202-8227",
+    location: "New Orleans, LA",
     availability: "Mon - Fri, 9am - 5pm CST"
   },
   social: {
