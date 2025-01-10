@@ -23,11 +23,11 @@ const DownloadButton = () => {
       className={`flex items-center gap-2 text-sm font-medium transition-colors ${
         isGenerating ? 'opacity-50 cursor-not-allowed' : 'hover:text-accent'
       }`}
-      aria-label="Download Portfolio PDF"
+      aria-label="Download Portfolio"
     >
       <FiDownload className={`w-4 h-4 ${isGenerating ? 'animate-spin' : ''}`} />
       <span className="hidden lg:inline">
-        {isGenerating ? 'Generating...' : 'Download PDF'}
+        {isGenerating ? 'Generating...' : 'Download Portfolio'}
       </span>
     </button>
   );
