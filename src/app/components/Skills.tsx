@@ -12,11 +12,11 @@ interface SkillCategoryProps {
 }
 
 const SkillCategory = ({ title, skills, isLastColumn, showCheckmarks, isCentered }: SkillCategoryProps) => (
-  <div className={`space-y-4 ${isLastColumn ? 'lg:text-right' : ''}`}>
+  <div className={`space-y-4 ${isLastColumn ? 'lg:text-right text-center' : 'text-center lg:text-left'}`}>
     <h3 className={`text-xl font-bold text-gray-800 ${isCentered ? 'text-center' : ''}`}>{title}</h3>
     <div className="space-y-3">
       {skills.map((skill, index) => (
-        <div key={index} className={`relative flex ${isCentered ? 'justify-center' : isLastColumn ? 'justify-end' : ''}`}>
+        <div key={index} className={`relative flex ${isCentered ? 'justify-center' : isLastColumn ? 'lg:justify-end justify-center' : 'lg:justify-start justify-center'}`}>
           {isLastColumn ? (
             // Right column layout
             <div className="flex items-center gap-6">
@@ -96,7 +96,7 @@ export default function Skills() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-5xl mx-auto">
           {skillCategories.map((category, index) => (
             <SkillCategory
               key={index}
