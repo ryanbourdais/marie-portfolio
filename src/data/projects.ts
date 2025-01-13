@@ -50,7 +50,7 @@ export const projects: Record<string, Project> = {
     sections: [
       {
         title: "Project Overview",
-        content: "Complete architectural documentation including floor plans, elevations, and detailed drawings."
+        content: "Complete architectural documentation including floor plans, elevations, and detailed drawings for a residential renovation in New Orleans."
       }
     ],
     services: [
@@ -65,8 +65,13 @@ export const projects: Record<string, Project> = {
         images: [
           {
             url: "/projects/joseph_st/Joseph_St_PDF_page_1.jpg",
-            alt: "Joseph Street Project Overview",
-            caption: "Project documentation overview"
+            alt: "Project Cover",
+            caption: "Project Overview"
+          },
+          {
+            url: "/projects/joseph_st/Joseph_St_PDF_page_2.jpg",
+            alt: "Floor Plans",
+            caption: "Detailed Floor Plans"
           }
         ]
       }
@@ -74,6 +79,185 @@ export const projects: Record<string, Project> = {
     pdf: {
       url: "/projects/joseph_st/joseph_st.pdf",
       title: "Joseph Street Project Documentation"
+    }
+  },
+  'cuddihy-st': {
+    id: 'cuddihy-st',
+    title: "Cuddihy Street Renovation",
+    category: "Residential",
+    location: "Metairie, LA",
+    year: "2024",
+    description: "Modern home renovation project featuring updated interiors and thoughtful space planning.",
+    sections: [
+      {
+        title: "Project Overview",
+        content: "Complete renovation design focusing on modernizing the space while maintaining functionality."
+      }
+    ],
+    services: [
+      "Renovation planning",
+      "Interior design",
+      "3D visualization",
+      "Construction documentation"
+    ],
+    imageGroups: [
+      {
+        layout: 'row',
+        images: [
+          {
+            url: "/projects/cuddihy_st/renders/2024.35_315_Cuddihy_Metairie_LA._Home_Renovation__02_.png",
+            alt: "Kitchen Renovation",
+            caption: "Modern Kitchen Design"
+          },
+          {
+            url: "/projects/cuddihy_st/renders/Sink_Area_.png",
+            alt: "Sink Area",
+            caption: "Custom Sink Area Design"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/cuddihy_st/CUDDIHY_PDF_page_1.jpg",
+            alt: "Project Documentation",
+            caption: "Project Overview"
+          }
+        ]
+      }
+    ],
+    pdf: {
+      url: "/projects/cuddihy_st/cuddihy_st.pdf",
+      title: "Cuddihy Street Renovation Documentation"
+    }
+  },
+  'hillary-st': {
+    id: 'hillary-st',
+    title: "Hillary Street Project",
+    category: "Residential",
+    location: "New Orleans, LA",
+    year: "2024",
+    description: "Comprehensive home renovation featuring modern amenities while preserving historical character.",
+    sections: [
+      {
+        title: "Project Scope",
+        content: "Full-scale renovation including interior updates, outdoor living spaces, and structural improvements."
+      }
+    ],
+    services: [
+      "Architectural design",
+      "Interior planning",
+      "3D visualization",
+      "Construction documentation"
+    ],
+    imageGroups: [
+      {
+        layout: 'row',
+        images: [
+          {
+            url: "/projects/hillary_st/01 renders/UPDATED KITCHEN EDIT.jpeg",
+            alt: "Updated Kitchen",
+            caption: "Modern Kitchen Design"
+          },
+          {
+            url: "/projects/hillary_st/01 renders/Foyer with trim work.jpeg",
+            alt: "Foyer Design",
+            caption: "Elegant Foyer with Custom Trim"
+          },
+          {
+            url: "/projects/hillary_st/01 renders/Back yard over view 02 edited.jpeg",
+            alt: "Backyard Overview",
+            caption: "Landscaped Backyard Design"
+          }
+        ]
+      }
+    ],
+    pdf: {
+      url: "/projects/hillary_st/Hillary_st.pdf",
+      title: "Hillary Street Project Documentation"
+    }
+  },
+  'calhoun-st': {
+    id: 'calhoun-st',
+    title: "Calhoun Street Project",
+    category: "Residential",
+    location: "New Orleans, LA",
+    year: "2024",
+    description: "Elegant residential renovation combining traditional New Orleans architecture with contemporary living spaces.",
+    sections: [
+      {
+        title: "Design Approach",
+        content: "Thoughtful renovation preserving historical elements while introducing modern functionality."
+      }
+    ],
+    services: [
+      "Architectural design",
+      "Space planning",
+      "3D visualization",
+      "Construction documentation"
+    ],
+    imageGroups: [
+      {
+        layout: 'row',
+        images: [
+          {
+            url: "/projects/calhoun_st/01 renders/UPDATED KITCHEN EDIT.jpeg",
+            alt: "Kitchen Design",
+            caption: "Updated Kitchen Layout"
+          },
+          {
+            url: "/projects/calhoun_st/01 renders/Foyer with trim work.jpeg",
+            alt: "Foyer Design",
+            caption: "Classic Foyer with Modern Touch"
+          }
+        ]
+      }
+    ],
+    pdf: {
+      url: "/projects/calhoun_st/calhoun_stf.pdf",
+      title: "Calhoun Street Project Documentation"
+    }
+  },
+  'burdette-st': {
+    id: 'burdette-st',
+    title: "Burdette Street Project",
+    category: "Residential",
+    location: "New Orleans, LA",
+    year: "2024",
+    description: "Modern residential renovation focusing on open-concept living and improved functionality.",
+    sections: [
+      {
+        title: "Project Goals",
+        content: "Creating a seamless flow between spaces while maximizing natural light and functionality."
+      }
+    ],
+    services: [
+      "Architectural design",
+      "Interior planning",
+      "Construction documentation",
+      "Permit documentation"
+    ],
+    imageGroups: [
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/burdette_st/Burdette_PDF_page_1.jpg",
+            alt: "Project Overview",
+            caption: "Project Documentation"
+          },
+          {
+            url: "/projects/burdette_st/Burdette_PDF_page_2.jpg",
+            alt: "Floor Plans",
+            caption: "Detailed Floor Plans"
+          }
+        ]
+      }
+    ],
+    pdf: {
+      url: "/projects/burdette_st/burdette_st.pdf",
+      title: "Burdette Street Project Documentation"
     }
   },
   'school-projects': {
