@@ -18,12 +18,12 @@ const nextConfig = {
       path: false,
     };
 
-    // Copy PDF.js worker files to public directory
+    // Handle PDF.js worker files
     config.module.rules.push({
       test: /pdf\.worker\.(min\.)?js/,
       type: 'asset/resource',
       generator: {
-        filename: 'static/[hash][ext][query]'
+        filename: 'static/worker/[hash][ext][query]'
       }
     });
 
