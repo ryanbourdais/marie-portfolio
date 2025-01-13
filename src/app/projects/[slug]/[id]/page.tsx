@@ -2,10 +2,10 @@
 
 import { notFound } from 'next/navigation';
 import { projects } from '@/data/projects';
-import ProjectHero from '@/components/ProjectHero';
-import ProjectContent from '@/components/ProjectContent';
-import ProjectGallery from '@/components/ProjectGallery';
-import PDFViewer from '@/components/pdf/PDFViewer';
+import ProjectHero from '@/app/components/ProjectHero';
+import ProjectContent from '@/app/components/ProjectContent';
+import ProjectGallery from '@/app/components/ProjectGallery';
+import PDFViewer from '@/app/components/pdf/PDFViewer';
 
 interface ProjectPageProps {
   params: {
