@@ -26,8 +26,8 @@ interface PDFViewerProps {
 export default function PDFViewer({ 
   url, 
   width = '100%', 
-  height = '600px',
-  initialScale = 1.0,
+  height = '90vh',
+  initialScale = 0.35,
   className = ''
 }: PDFViewerProps) {
   const [numPages, setNumPages] = useState<number | null>(null);
@@ -60,13 +60,11 @@ export default function PDFViewer({
   };
 
   const zoomIn = () => {
-    setScale(scale + 0.2);
+    setScale(prevScale => Math.min(prevScale + 0.1, 1.2));
   };
 
   const zoomOut = () => {
-    if (scale > 0.4) {
-      setScale(scale - 0.2);
-    }
+    setScale(prevScale => Math.max(prevScale - 0.1, 0.2));
   };
 
   const downloadPDF = () => {
@@ -115,7 +113,7 @@ export default function PDFViewer({
           variant="outline"
           size="icon"
           onClick={zoomOut}
-          disabled={scale <= 0.4}
+          disabled={scale <= 0.2}
           aria-label="Zoom out"
         >
           <ZoomOut className="h-4 w-4" />
@@ -127,6 +125,7 @@ export default function PDFViewer({
           variant="outline"
           size="icon"
           onClick={zoomIn}
+          disabled={scale >= 1.2}
           aria-label="Zoom in"
         >
           <ZoomIn className="h-4 w-4" />
@@ -147,7 +146,7 @@ export default function PDFViewer({
       {/* PDF Document */}
       <div 
         style={{ width, height }} 
-        className="relative border rounded-lg overflow-auto bg-white"
+        className="relative border rounded-lg overflow-auto bg-white p-6"
       >
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-white/80">
@@ -164,7 +163,7 @@ export default function PDFViewer({
             pageNumber={pageNumber}
             scale={scale}
             loading={null}
-            className="flex justify-center p-4"
+            className="flex justify-center"
           />
         </Document>
       </div>
