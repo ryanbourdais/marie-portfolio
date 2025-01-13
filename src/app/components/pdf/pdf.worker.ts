@@ -1,3 +1,4 @@
-import { PDFWorker } from 'pdfjs-dist/build/pdf.worker.mjs';
+import 'pdfjs-dist/build/pdf.worker.min';
 
-export default PDFWorker; 
+// The worker will be automatically loaded by pdf.js
+export const pdfWorkerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${process.env.NEXT_PUBLIC_PDFJS_VERSION}/pdf.worker.min.js`; 

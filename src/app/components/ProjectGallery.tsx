@@ -17,9 +17,6 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
       <div className="space-y-16">
         {project.imageGroups.map((group, groupIndex) => (
           <div key={groupIndex}>
-            {group.title && (
-              <h3 className="text-xl font-semibold mb-6">{group.title}</h3>
-            )}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {group.images.map((image, imageIndex) => (
                 <div key={imageIndex} className="relative aspect-[4/3]">

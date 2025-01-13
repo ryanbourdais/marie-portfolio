@@ -18,8 +18,20 @@ const nextConfig = {
       path: false,
     };
 
+    // Copy PDF.js worker files to public directory
+    config.module.rules.push({
+      test: /pdf\.worker\.(min\.)?js/,
+      type: 'asset/resource',
+      generator: {
+        filename: 'static/[hash][ext][query]'
+      }
+    });
+
     return config;
   },
+  env: {
+    NEXT_PUBLIC_PDFJS_VERSION: '3.11.174'
+  }
 }
 
 export default nextConfig; 
