@@ -76,13 +76,8 @@ export const projects: Record<string, Project> = {
         ]
       },
       {
-        layout: 'row',
+        layout: 'stack',
         images: [
-          {
-            url: "/projects/joseph_st/Joseph_St_PDF_page_10.jpg",
-            alt: "Documentation Page 10",
-            caption: "Technical Documentation"
-          },
           {
             url: "/projects/joseph_st/Joseph_St_PDF_page_11.jpg",
             alt: "Documentation Page 11",
@@ -96,7 +91,7 @@ export const projects: Record<string, Project> = {
         ]
       },
       {
-        layout: 'row',
+        layout: 'stack',
         images: [
           {
             url: "/projects/joseph_st/elevation_1.jpg",
@@ -111,7 +106,7 @@ export const projects: Record<string, Project> = {
         ]
       },
       {
-        layout: 'row',
+        layout: 'stack',
         images: [
           {
             url: "/projects/joseph_st/elevation_3.jpg",
@@ -152,8 +147,13 @@ export const projects: Record<string, Project> = {
     ],
     imageGroups: [
       {
-        layout: 'row',
+        layout: 'stack',
         images: [
+          {
+            url: "/projects/cuddihy_st/renders/hero.jpg",
+            alt: "Outdoor Renovation",
+            caption: "Outdoor render"
+          },
           {
             url: "/projects/cuddihy_st/renders/2024.35_315_Cuddihy_Metairie_LA._Home_Renovation__02_.png",
             alt: "Kitchen Renovation",
@@ -170,9 +170,39 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/cuddihy_st/CUDDIHY_PDF_page_1.jpg",
-            alt: "Project Documentation",
-            caption: "Project Overview"
+            url: "/projects/cuddihy_st/floor_plan.jpg",
+            alt: "First Floor Plan",
+            caption: "First Floor Layout"
+          },
+          {
+            url: "/projects/cuddihy_st/floor_plan_2.jpg",
+            alt: "Second Floor Plan",
+            caption: "Second Floor Layout"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/cuddihy_st/elevation_1.jpg",
+            alt: "Front Elevation",
+            caption: "Front Elevation"
+          },
+          {
+            url: "/projects/cuddihy_st/elevation_2.jpg",
+            alt: "Side Elevation",
+            caption: "Side Elevation"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/cuddihy_st/elevation_3.jpg",
+            alt: "Rear Elevation",
+            caption: "Rear Elevation"
           }
         ]
       }
@@ -203,37 +233,57 @@ export const projects: Record<string, Project> = {
     ],
     imageGroups: [
       {
-        layout: 'row',
+        layout: 'stack',
         images: [
-          {
-            url: "/projects/calhoun_st/renders/EDITED_RENDERS/FRONT_RENDER.jpg",
-            alt: "Front Exterior",
-            caption: "Modern Exterior Design"
-          },
           {
             url: "/projects/calhoun_st/renders/EDITED_RENDERS/KITCHEN_RENDER.jpg",
             alt: "Kitchen Design",
             caption: "Contemporary Kitchen"
           },
           {
-            url: "/projects/calhoun_st/renders/EDITED_RENDERS/COMMON_ROOM.jpg",
-            alt: "Common Room",
-            caption: "Open Concept Living Space"
+            url: "/projects/calhoun_st/renders/EDITED_RENDERS/LIVING_ROOM_RENDER .jpg",
+            alt: "Living Room",
+            caption: "Spacious Living Area"
           }
         ]
       },
       {
-        layout: 'row',
+        layout: 'stack',
         images: [
           {
-            url: "/projects/calhoun_st/renders/EDITED_RENDERS/BATHROOM_RENDER.jpg",
-            alt: "Bathroom Design",
-            caption: "Modern Bathroom"
+            url: "/projects/calhoun_st/floor_plan_1.jpg",
+            alt: "First Floor Plan",
+            caption: "First Floor Layout"
           },
           {
-            url: "/projects/calhoun_st/renders/EDITED_RENDERS/LIVING_ROOM_RENDER.jpg",
-            alt: "Living Room",
-            caption: "Spacious Living Area"
+            url: "/projects/calhoun_st/floor_plan_2.jpg",
+            alt: "Second Floor Plan",
+            caption: "Second Floor Layout"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/calhoun_st/elevation_1.jpg",
+            alt: "Front Elevation",
+            caption: "Front Elevation"
+          },
+          {
+            url: "/projects/calhoun_st/elevation_2.jpg",
+            alt: "Side Elevation",
+            caption: "Side Elevation"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/calhoun_st/elevation_3.jpg",
+            alt: "Rear Elevation",
+            caption: "Rear Elevation"
           }
         ]
       }
@@ -273,8 +323,48 @@ export const projects: Record<string, Project> = {
           },
           {
             url: "/projects/hillary_st/Hillary_St_PDF_page_2.jpg",
-            alt: "Floor Plans",
-            caption: "Detailed Floor Plans"
+            alt: "Project Details",
+            caption: "Project Details"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/hillary_st/floor_plan_1.jpg",
+            alt: "First Floor Plan",
+            caption: "First Floor Layout"
+          },
+          {
+            url: "/projects/hillary_st/floor_plan_2.jpg",
+            alt: "Second Floor Plan",
+            caption: "Second Floor Layout"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/hillary_st/elevation_1.jpg",
+            alt: "Front Elevation",
+            caption: "Front Elevation"
+          },
+          {
+            url: "/projects/hillary_st/elevation_2.jpg",
+            alt: "Side Elevation",
+            caption: "Side Elevation"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/hillary_st/elevation_3.jpg",
+            alt: "Rear Elevation",
+            caption: "Rear Elevation"
           }
         ]
       }
@@ -313,9 +403,39 @@ export const projects: Record<string, Project> = {
             caption: "Project Documentation"
           },
           {
-            url: "/projects/burdette_st/Burdette_PDF_page_2.jpg",
-            alt: "Floor Plans",
-            caption: "Detailed Floor Plans"
+            url: "/projects/burdette_st/floor_plan.jpg",
+            alt: "Floor Plan",
+            caption: "Detailed Floor Plan"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/burdette_st/elevation_1.jpg",
+            alt: "Front Elevation",
+            caption: "Front Elevation"
+          },
+          {
+            url: "/projects/burdette_st/elevation_2.jpg",
+            alt: "Right Elevation",
+            caption: "Right Elevation"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/burdette_st/elevation_3.jpg",
+            alt: "Rear Elevation",
+            caption: "Rear Elevation"
+          },
+          {
+            url: "/projects/burdette_st/elevation_4.jpg",
+            alt: "Left Elevation",
+            caption: "Left Elevation"
           }
         ]
       }
@@ -362,7 +482,7 @@ export const projects: Record<string, Project> = {
         ]
       },
       {
-        layout: 'row',
+        layout: 'stack',
         images: [
           {
             url: "/images/school-projects/1.jpg",
@@ -388,6 +508,161 @@ export const projects: Record<string, Project> = {
         title: "Foundation Plan"
       }
     ]
+  },
+  'aspen-st': {
+    id: 'aspen-st',
+    title: "Aspen Street Project",
+    category: "Residential",
+    location: "New Orleans, LA",
+    year: "2023",
+    description: "A comprehensive residential renovation project featuring modern design elements while maintaining the home's classic character.",
+    services: [
+      "Complete architectural drawings",
+      "Building permit documentation",
+      "3D visualization",
+      "Construction documentation"
+    ],
+    imageGroups: [
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/aspen_st/renders/kitchen.jpg",
+            alt: "Kitchen Design",
+            caption: "Modern Kitchen Design"
+          },
+          {
+            url: "/projects/aspen_st/renders/living_room.jpg",
+            alt: "Living Room Design",
+            caption: "Open Concept Living Space"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/aspen_st/floor_plan_1.jpg",
+            alt: "First Floor Plan",
+            caption: "First Floor Layout"
+          },
+          {
+            url: "/projects/aspen_st/floor_plan_2.jpg",
+            alt: "Second Floor Plan",
+            caption: "Second Floor Layout"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/aspen_st/elevation_1.jpg",
+            alt: "Front Elevation",
+            caption: "Front Elevation"
+          },
+          {
+            url: "/projects/aspen_st/elevation_2.jpg",
+            alt: "Right Elevation",
+            caption: "Right Elevation"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/aspen_st/elevation_3.jpg",
+            alt: "Rear Elevation",
+            caption: "Rear Elevation"
+          },
+          {
+            url: "/projects/aspen_st/elevation_4.jpg",
+            alt: "Left Elevation",
+            caption: "Left Elevation"
+          }
+        ]
+      }
+    ],
+    pdf: {
+      url: "/projects/aspen_st/aspen_st.pdf"
+    }
+  },
+  'burgundy-st': {
+    id: 'burgundy-st',
+    title: "Burgundy Street Project",
+    category: "Residential",
+    location: "New Orleans, LA",
+    year: "2024",
+    description: "A thoughtful residential renovation project in historic New Orleans, blending traditional architecture with modern amenities.",
+    sections: [
+      {
+        title: "Project Overview",
+        content: "Complete architectural documentation for a residential renovation that respects the historical context while introducing contemporary living spaces."
+      }
+    ],
+    services: [
+      "Complete architectural drawings",
+      "Building permit documentation",
+      "3D visualization",
+      "Construction documentation"
+    ],
+    imageGroups: [
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/burgundy_st/renders/RENDER_EXTERIOR.jpeg",
+            alt: "Exterior Render",
+            caption: "Modern Exterior Design"
+          },
+          {
+            url: "/projects/burgundy_st/Burgundy_PDF_page_1.jpg",
+            alt: "Project Overview",
+            caption: "Project Documentation"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/burgundy_st/floor_plan.jpg",
+            alt: "Floor Plan",
+            caption: "Detailed Floor Plan"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/burgundy_st/elevation_1.jpg",
+            alt: "Front Elevation",
+            caption: "Front Elevation"
+          },
+          {
+            url: "/projects/burgundy_st/elevation_2.jpg",
+            alt: "Side Elevation",
+            caption: "Side Elevation"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/burgundy_st/elevation_3.jpg",
+            alt: "Rear Elevation",
+            caption: "Rear Elevation"
+          }
+        ]
+      }
+    ],
+    pdf: {
+      url: "/projects/burgundy_st/burgundy_st.pdf",
+      title: "Burgundy Street Project Documentation"
+    }
   }
 }
 
@@ -398,3 +673,4 @@ export const getProject = (slug: string): Project | undefined => {
 export const getAllProjects = (): Project[] => {
   return Object.values(projects);
 } 
+ 
