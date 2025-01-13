@@ -96,7 +96,7 @@ export function ProjectContent({ project }: ProjectContentProps) {
                 key={groupIndex} 
                 className={cn(
                   "space-y-4",
-                  group.layout === 'row' && "space-y-0 grid grid-cols-2 md:grid-cols-3 gap-4"
+                  group.layout === 'row' && `space-y-0 grid ${group.images.length === 2 ? 'grid-cols-2' : 'grid-cols-3'} gap-4`
                 )}
               >
                 {group.images.map((image, imageIndex) => (

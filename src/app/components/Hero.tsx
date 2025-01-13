@@ -12,7 +12,7 @@ export default function Hero() {
             src={heroContent.backgroundImage}
             alt="Featured architectural project"
             fill
-            className="object-cover object-[center_85%] w-full"
+            className="object-cover object-[center_30%] w-full"
             priority
             quality={90}
           />

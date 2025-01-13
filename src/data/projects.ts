@@ -31,7 +31,7 @@ export interface Project {
   description: string
   sections?: ProjectSection[]
   services: string[]
-  imageGroups: ImageGroup[]  // Replace images with imageGroups
+  imageGroups: ImageGroup[]
   technicalDrawings?: TechnicalDrawing[]
   pdf?: {
     url: string
@@ -50,7 +50,7 @@ export const projects: Record<string, Project> = {
     sections: [
       {
         title: "Project Overview",
-        content: "Complete architectural documentation including floor plans, elevations, and detailed drawings for a residential renovation in New Orleans."
+        content: "Complete architectural documentation including floor plans, elevations, and detailed drawings for a residential renovation in New Orleans. This project combines modern amenities with traditional architectural elements to create a harmonious living space."
       }
     ],
     services: [
@@ -64,14 +64,64 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/joseph_st/Joseph_St_PDF_page_1.jpg",
-            alt: "Project Cover",
-            caption: "Project Overview"
+            url: "/projects/joseph_st/renders/Kitchen_Rendered_Edited.png",
+            alt: "Kitchen Design",
+            caption: "Modern Kitchen Design"
           },
           {
-            url: "/projects/joseph_st/Joseph_St_PDF_page_2.jpg",
-            alt: "Floor Plans",
-            caption: "Detailed Floor Plans"
+            url: "/projects/joseph_st/renders/FOYER_EDITED_RENDER.png",
+            alt: "Foyer Design",
+            caption: "Elegant Foyer with Custom Trim"
+          }
+        ]
+      },
+      {
+        layout: 'row',
+        images: [
+          {
+            url: "/projects/joseph_st/Joseph_St_PDF_page_10.jpg",
+            alt: "Documentation Page 10",
+            caption: "Technical Documentation"
+          },
+          {
+            url: "/projects/joseph_st/Joseph_St_PDF_page_11.jpg",
+            alt: "Documentation Page 11",
+            caption: "Technical Documentation"
+          },
+          {
+            url: "/projects/joseph_st/Joseph_St_PDF_page_12.jpg",
+            alt: "Documentation Page 12",
+            caption: "Technical Documentation"
+          }
+        ]
+      },
+      {
+        layout: 'row',
+        images: [
+          {
+            url: "/projects/joseph_st/elevation_1.jpg",
+            alt: "Front Elevation",
+            caption: "Front Elevation Design"
+          },
+          {
+            url: "/projects/joseph_st/elevation_2.jpg",
+            alt: "Side Elevation",
+            caption: "Side Elevation Design"
+          }
+        ]
+      },
+      {
+        layout: 'row',
+        images: [
+          {
+            url: "/projects/joseph_st/elevation_3.jpg",
+            alt: "Rear Elevation",
+            caption: "Rear Elevation Design"
+          },
+          {
+            url: "/projects/joseph_st/elevation_4.jpg",
+            alt: "Side Elevation",
+            caption: "Side Elevation Design"
           }
         ]
       }
@@ -132,52 +182,6 @@ export const projects: Record<string, Project> = {
       title: "Cuddihy Street Renovation Documentation"
     }
   },
-  'hillary-st': {
-    id: 'hillary-st',
-    title: "Hillary Street Project",
-    category: "Residential",
-    location: "New Orleans, LA",
-    year: "2024",
-    description: "Comprehensive home renovation featuring modern amenities while preserving historical character.",
-    sections: [
-      {
-        title: "Project Scope",
-        content: "Full-scale renovation including interior updates, outdoor living spaces, and structural improvements."
-      }
-    ],
-    services: [
-      "Architectural design",
-      "Interior planning",
-      "3D visualization",
-      "Construction documentation"
-    ],
-    imageGroups: [
-      {
-        layout: 'row',
-        images: [
-          {
-            url: "/projects/hillary_st/01 renders/UPDATED KITCHEN EDIT.jpeg",
-            alt: "Updated Kitchen",
-            caption: "Modern Kitchen Design"
-          },
-          {
-            url: "/projects/hillary_st/01 renders/Foyer with trim work.jpeg",
-            alt: "Foyer Design",
-            caption: "Elegant Foyer with Custom Trim"
-          },
-          {
-            url: "/projects/hillary_st/01 renders/Back yard over view 02 edited.jpeg",
-            alt: "Backyard Overview",
-            caption: "Landscaped Backyard Design"
-          }
-        ]
-      }
-    ],
-    pdf: {
-      url: "/projects/hillary_st/Hillary_st.pdf",
-      title: "Hillary Street Project Documentation"
-    }
-  },
   'calhoun-st': {
     id: 'calhoun-st',
     title: "Calhoun Street Project",
@@ -202,14 +206,34 @@ export const projects: Record<string, Project> = {
         layout: 'row',
         images: [
           {
-            url: "/projects/calhoun_st/01 renders/UPDATED KITCHEN EDIT.jpeg",
-            alt: "Kitchen Design",
-            caption: "Updated Kitchen Layout"
+            url: "/projects/calhoun_st/renders/EDITED_RENDERS/FRONT_RENDER.jpg",
+            alt: "Front Exterior",
+            caption: "Modern Exterior Design"
           },
           {
-            url: "/projects/calhoun_st/01 renders/Foyer with trim work.jpeg",
-            alt: "Foyer Design",
-            caption: "Classic Foyer with Modern Touch"
+            url: "/projects/calhoun_st/renders/EDITED_RENDERS/KITCHEN_RENDER.jpg",
+            alt: "Kitchen Design",
+            caption: "Contemporary Kitchen"
+          },
+          {
+            url: "/projects/calhoun_st/renders/EDITED_RENDERS/COMMON_ROOM.jpg",
+            alt: "Common Room",
+            caption: "Open Concept Living Space"
+          }
+        ]
+      },
+      {
+        layout: 'row',
+        images: [
+          {
+            url: "/projects/calhoun_st/renders/EDITED_RENDERS/BATHROOM_RENDER.jpg",
+            alt: "Bathroom Design",
+            caption: "Modern Bathroom"
+          },
+          {
+            url: "/projects/calhoun_st/renders/EDITED_RENDERS/LIVING_ROOM_RENDER.jpg",
+            alt: "Living Room",
+            caption: "Spacious Living Area"
           }
         ]
       }
@@ -217,6 +241,47 @@ export const projects: Record<string, Project> = {
     pdf: {
       url: "/projects/calhoun_st/calhoun_stf.pdf",
       title: "Calhoun Street Project Documentation"
+    }
+  },
+  'hillary-st': {
+    id: 'hillary-st',
+    title: "Hillary Street Project",
+    category: "Residential",
+    location: "New Orleans, LA",
+    year: "2024",
+    description: "Comprehensive home renovation featuring modern amenities while preserving historical character.",
+    sections: [
+      {
+        title: "Project Scope",
+        content: "Full-scale renovation including interior updates, outdoor living spaces, and structural improvements."
+      }
+    ],
+    services: [
+      "Architectural design",
+      "Interior planning",
+      "3D visualization",
+      "Construction documentation"
+    ],
+    imageGroups: [
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/hillary_st/Hillary_St_PDF_page_1.jpg",
+            alt: "Project Overview",
+            caption: "Project Documentation"
+          },
+          {
+            url: "/projects/hillary_st/Hillary_St_PDF_page_2.jpg",
+            alt: "Floor Plans",
+            caption: "Detailed Floor Plans"
+          }
+        ]
+      }
+    ],
+    pdf: {
+      url: "/projects/hillary_st/Hillary_st.pdf",
+      title: "Hillary Street Project Documentation"
     }
   },
   'burdette-st': {
@@ -321,221 +386,6 @@ export const projects: Record<string, Project> = {
       {
         url: "/images/school-projects/birdy-bitch.jpg",
         title: "Foundation Plan"
-      }
-    ]
-  },
-  'boutique-retail': {
-    id: 'boutique-retail',
-    title: "Boutique Retail Space",
-    category: "Commercial",
-    location: "Vancouver, BC",
-    year: "2023",
-    description: "A modern retail space design that maximizes product display while maintaining an inviting atmosphere.",
-    sections: [
-      {
-        title: "Challenge",
-        content: "Creating an efficient flow pattern while maximizing display space in a narrow storefront."
-      },
-      {
-        title: "Solution",
-        content: "Innovative layout design with modular display units and strategic lighting placement to create distinct zones."
-      }
-    ],
-    services: [
-      "Space planning",
-      "Interior elevations",
-      "Lighting design",
-      "Permit drawings"
-    ],
-    imageGroups: [
-      {
-        layout: 'row',
-        images: [
-          {
-            url: "https://images.unsplash.com/photo-1604014237800-1c9102c219da",
-            alt: "Retail Space Interior",
-            caption: "Modern retail interior with optimal flow"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5",
-            alt: "Display Area",
-            caption: "Custom display solutions"
-          }
-        ]
-      }
-    ]
-  },
-  'heritage-renovation': {
-    id: 'heritage-renovation',
-    title: "Heritage Home Renovation",
-    category: "Residential",
-    location: "Montreal, QC",
-    year: "2023",
-    description: "Careful renovation of a 1920s heritage home, preserving historical elements while adding modern amenities.",
-    sections: [
-      {
-        title: "Challenge",
-        content: "Integrating modern systems while preserving historical architectural details."
-      },
-      {
-        title: "Solution",
-        content: "Detailed documentation of heritage elements and creative solutions for modern integration."
-      }
-    ],
-    services: [
-      "As-built documentation",
-      "Heritage conservation plans",
-      "Renovation drawings",
-      "Building permit applications"
-    ],
-    imageGroups: [
-      {
-        layout: 'row',
-        images: [
-          {
-            url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
-            alt: "Heritage Home Exterior",
-            caption: "Preserved historical facade"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1600573472592-401b489a3cdc",
-            alt: "Interior Details",
-            caption: "Original moldings and modern updates"
-          }
-        ]
-      }
-    ]
-  },
-  'office-renovation': {
-    id: 'office-renovation',
-    title: "Corporate Office Renovation",
-    category: "Commercial",
-    location: "Calgary, AB",
-    year: "2023",
-    description: "Modern office space redesign focusing on collaboration and flexibility.",
-    sections: [
-      {
-        title: "Challenge",
-        content: "Converting traditional office layout to a hybrid-friendly workspace."
-      },
-      {
-        title: "Solution",
-        content: "Flexible floor plan with modular furniture systems and tech-enabled meeting spaces."
-      }
-    ],
-    services: [
-      "Space planning",
-      "Construction documents",
-      "Furniture layouts",
-      "Technical specifications"
-    ],
-    imageGroups: [
-      {
-        layout: 'row',
-        images: [
-          {
-            url: "https://images.unsplash.com/photo-1497366216548-37526070297c",
-            alt: "Office Interior",
-            caption: "Modern collaborative workspace"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1497366811353-6870744d04b2",
-            alt: "Meeting Area",
-            caption: "Tech-enabled meeting space"
-          }
-        ]
-      }
-    ]
-  },
-  'technical-documentation': {
-    id: 'technical-documentation',
-    title: "Industrial Facility Documentation",
-    category: "Technical Documentation",
-    location: "Edmonton, AB",
-    year: "2023",
-    description: "Comprehensive as-built documentation for an existing manufacturing facility.",
-    sections: [
-      {
-        title: "Challenge",
-        content: "Accurate measurement and documentation of complex industrial systems."
-      },
-      {
-        title: "Solution",
-        content: "Detailed technical drawings with comprehensive annotations and specifications."
-      }
-    ],
-    services: [
-      "As-built documentation",
-      "System diagrams",
-      "Technical specifications",
-      "Code compliance review"
-    ],
-    imageGroups: [
-      {
-        layout: 'row',
-        images: [
-          {
-            url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
-            alt: "Technical Drawing",
-            caption: "Detailed technical documentation"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0",
-            alt: "Facility Layout",
-            caption: "Comprehensive facility documentation"
-          }
-        ]
-      }
-    ]
-  },
-  'sustainable-home': {
-    id: 'sustainable-home',
-    title: "Net-Zero Home Design",
-    category: "Residential",
-    location: "Victoria, BC",
-    year: "2024",
-    description: "Energy-efficient home design incorporating sustainable materials and passive solar principles.",
-    sections: [
-      {
-        title: "Challenge",
-        content: "Balancing energy efficiency with aesthetic appeal and budget constraints."
-      },
-      {
-        title: "Solution",
-        content: "Innovative use of sustainable materials and smart home technology integration."
-      }
-    ],
-    services: [
-      "Sustainable design documentation",
-      "Energy modeling coordination",
-      "Construction documents",
-      "Green building certification"
-    ],
-    imageGroups: [
-      {
-        layout: 'row',
-        images: [
-          {
-            url: "https://images.unsplash.com/photo-1523217582562-09d0def993a6",
-            alt: "Sustainable Home",
-            caption: "Eco-friendly home design"
-          },
-          {
-            url: "https://images.unsplash.com/photo-1600585152915-d208bec867a1",
-            alt: "Solar Integration",
-            caption: "Integrated solar solutions"
-          }
-        ]
-      }
-    ],
-    technicalDrawings: [
-      {
-        url: "https://images.unsplash.com/photo-1593642532744-d377ab507dc8",
-        title: "Floor Plan - Ground Level"
-      },
-      {
-        url: "https://images.unsplash.com/photo-1586181567730-7c6613c49217",
-        title: "Elevation - Front View"
       }
     ]
   }
