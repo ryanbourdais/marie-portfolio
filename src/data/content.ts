@@ -16,7 +16,7 @@ export const siteConfig = {
 export const heroContent = {
   title: "Hi, I'm Marie French",
   subtitle: "Designing with passion and growing with every project",
-  backgroundImage: "/images/heros/home_hero.jpeg",
+  backgroundImage: "/images/heros/home_hero.jpg",
   buttons: {
     primary: "View My Work",
     secondary: "Get in Touch"
