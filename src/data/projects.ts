@@ -585,7 +585,8 @@ export const projects: Record<string, Project> = {
       }
     ],
     pdf: {
-      url: "/projects/aspen_st/aspen_st.pdf"
+      url: "/projects/aspen_st/aspen_st.pdf",
+      title: "Aspen Street Project Documentation"
     }
   },
   'burgundy-st': {
