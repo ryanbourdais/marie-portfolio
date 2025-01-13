@@ -1,6 +1,9 @@
 import { getProject, getAllProjects } from '@/data/projects'
 import { notFound } from 'next/navigation'
 import { ProjectContent } from './ProjectContent'
+import { ProjectGallery } from './ProjectGallery'
+import ProjectPDFViewer from '@/app/components/ProjectPDFViewer'
+import { ProjectNav } from './ProjectNav'
 
 interface PageProps {
   params: {
@@ -22,5 +25,12 @@ export default function ProjectPage({ params }: PageProps) {
     notFound()
   }
 
-  return <ProjectContent project={project} />
+  return (
+    <main className="min-h-screen">
+      <ProjectContent project={project} />
+      <ProjectGallery project={project} />
+      <ProjectPDFViewer project={project} />
+      <ProjectNav currentProject={project} />
+    </main>
+  )
 } 

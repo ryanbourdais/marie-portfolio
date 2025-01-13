@@ -33,9 +33,49 @@ export interface Project {
   services: string[]
   imageGroups: ImageGroup[]  // Replace images with imageGroups
   technicalDrawings?: TechnicalDrawing[]
+  pdf?: {
+    url: string
+    title: string
+  }
 }
 
 export const projects: Record<string, Project> = {
+  'joseph-st': {
+    id: 'joseph-st',
+    title: "Joseph Street Project",
+    category: "Residential",
+    location: "New Orleans, LA",
+    year: "2024",
+    description: "A comprehensive residential project showcasing modern architectural design with traditional New Orleans influences.",
+    sections: [
+      {
+        title: "Project Overview",
+        content: "Complete architectural documentation including floor plans, elevations, and detailed drawings."
+      }
+    ],
+    services: [
+      "Complete architectural drawings",
+      "Building permit documentation",
+      "3D visualization",
+      "Construction documentation"
+    ],
+    imageGroups: [
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/joseph_st/Joseph_St_PDF_page_1.jpg",
+            alt: "Joseph Street Project Overview",
+            caption: "Project documentation overview"
+          }
+        ]
+      }
+    ],
+    pdf: {
+      url: "/projects/joseph_st/joseph_st.pdf",
+      title: "Joseph Street Project Documentation"
+    }
+  },
   'school-projects': {
     id: 'school-projects',
     title: "School Projects",
