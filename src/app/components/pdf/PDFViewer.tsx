@@ -10,7 +10,7 @@ import 'react-pdf/dist/Page/TextLayer.css';
 // Import worker directly from the package
 import { GlobalWorkerOptions } from 'pdfjs-dist/legacy/build/pdf';
 if (typeof window !== 'undefined') {
-  GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${GlobalWorkerOptions.workerSrc?.split('/').pop()?.split('.')[0] || '3.11.174'}/pdf.worker.min.js`;
+  GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
 }
 
 interface PDFViewerProps {
