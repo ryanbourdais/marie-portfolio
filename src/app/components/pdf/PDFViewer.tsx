@@ -7,12 +7,10 @@ import { Button } from '@/components/ui/button';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 
-// Import and set up worker
+// Import worker directly from the package
 import { GlobalWorkerOptions } from 'pdfjs-dist/legacy/build/pdf';
-import pdfjsWorker from 'pdfjs-dist/legacy/build/pdf.worker.entry';
-
 if (typeof window !== 'undefined') {
-  GlobalWorkerOptions.workerSrc = pdfjsWorker;
+  GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${GlobalWorkerOptions.workerSrc?.split('/').pop()?.split('.')[0] || '3.11.174'}/pdf.worker.min.js`;
 }
 
 interface PDFViewerProps {
