@@ -109,14 +109,17 @@ export function ProjectContent({ project }: ProjectContentProps) {
                     onClick={() => openLightbox(groupIndex, imageIndex)}
                   >
                     <div className={cn(
-                      "relative bg-gray-100",
+                      "relative",
                       group.layout === 'stack' ? "h-[400px]" : "aspect-[2/3]"
                     )}>
                       <Image
                         src={image.url}
                         alt={image.alt}
                         fill
-                        className="object-cover hover:opacity-90 transition-opacity"
+                        className={cn(
+                          "hover:opacity-90 transition-opacity",
+                          groupIndex === 0 ? "object-cover" : "object-contain"
+                        )}
                       />
                     </div>
                     <figcaption className="text-sm text-gray-500">

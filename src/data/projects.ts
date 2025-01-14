@@ -79,12 +79,12 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/joseph_st/Joseph_St_PDF_page_11.jpg",
+            url: "/projects/joseph_st/floor_plan.jpg",
             alt: "Documentation Page 11",
             caption: "Technical Documentation"
           },
           {
-            url: "/projects/joseph_st/Joseph_St_PDF_page_12.jpg",
+            url: "/projects/joseph_st/floor_plan_2.jpg",
             alt: "Documentation Page 12",
             caption: "Technical Documentation"
           }
@@ -170,12 +170,12 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/cuddihy_st/floor_plan.jpg",
+            url: "/projects/cuddihy_st/floor_plan_new.jpg",
             alt: "First Floor Plan",
             caption: "First Floor Layout"
           },
           {
-            url: "/projects/cuddihy_st/floor_plan_2.jpg",
+            url: "/projects/cuddihy_st/floor_plan_new_2.jpg",
             alt: "Second Floor Plan",
             caption: "Second Floor Layout"
           }
@@ -251,12 +251,12 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/calhoun_st/floor_plan_1.jpg",
+            url: "/projects/calhoun_st/floor_plan_new.jpg",
             alt: "First Floor Plan",
             caption: "First Floor Layout"
           },
           {
-            url: "/projects/calhoun_st/floor_plan_2.jpg",
+            url: "/projects/calhoun_st/floor_plan_new_2.jpg",
             alt: "Second Floor Plan",
             caption: "Second Floor Layout"
           }
@@ -317,14 +317,9 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/hillary_st/Hillary_St_PDF_page_1.jpg",
-            alt: "Project Overview",
-            caption: "Project Documentation"
-          },
-          {
-            url: "/projects/hillary_st/Hillary_St_PDF_page_2.jpg",
-            alt: "Project Details",
-            caption: "Project Details"
+            url: "/projects/hillary_st/renders/renders_one_kitchen.jpeg",
+            alt: "Kitchen Design",
+            caption: "Modern Kitchen Design"
           }
         ]
       },
@@ -332,12 +327,12 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/hillary_st/floor_plan_1.jpg",
+            url: "/projects/hillary_st/floor_plan_new.jpg",
             alt: "First Floor Plan",
             caption: "First Floor Layout"
           },
           {
-            url: "/projects/hillary_st/floor_plan_2.jpg",
+            url: "/projects/hillary_st/floor_plan_new_2.jpg",
             alt: "Second Floor Plan",
             caption: "Second Floor Layout"
           }
@@ -398,12 +393,22 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/burdette_st/Burdette_PDF_page_1.jpg",
-            alt: "Project Overview",
-            caption: "Project Documentation"
+            url: "/projects/burdette_st/renders/render_one_.jpeg",
+            alt: "Exterior Render",
+            caption: "Modern Exterior Design"
           },
           {
-            url: "/projects/burdette_st/floor_plan.jpg",
+            url: "/projects/burdette_st/renders/render_two_burdette.jpeg",
+            alt: "Exterior Render",
+            caption: "Modern Exterior Design"
+          }
+        ]
+      },
+      {
+        layout: 'stack',
+        images: [
+          {
+            url: "/projects/burdette_st/floor_plan_new.jpg",
             alt: "Floor Plan",
             caption: "Detailed Floor Plan"
           }
@@ -514,7 +519,7 @@ export const projects: Record<string, Project> = {
     title: "Aspen Street Project",
     category: "Residential",
     location: "New Orleans, LA",
-    year: "2023",
+    year: "2025",
     description: "A comprehensive residential renovation project featuring modern design elements while maintaining the home's classic character.",
     services: [
       "Complete architectural drawings",
@@ -542,12 +547,12 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/aspen_st/floor_plan_1.jpg",
+            url: "/projects/aspen_st/floor_plan_new.jpg",
             alt: "First Floor Plan",
             caption: "First Floor Layout"
           },
           {
-            url: "/projects/aspen_st/floor_plan_2.jpg",
+            url: "/projects/aspen_st/floor_plan_new_2.jpg",
             alt: "Second Floor Plan",
             caption: "Second Floor Layout"
           }
@@ -616,11 +621,6 @@ export const projects: Record<string, Project> = {
             url: "/projects/burgundy_st/renders/RENDER_EXTERIOR.jpeg",
             alt: "Exterior Render",
             caption: "Modern Exterior Design"
-          },
-          {
-            url: "/projects/burgundy_st/Burgundy_PDF_page_1.jpg",
-            alt: "Project Overview",
-            caption: "Project Documentation"
           }
         ]
       },
@@ -628,7 +628,7 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/burgundy_st/floor_plan.jpg",
+            url: "/projects/burgundy_st/floor_plan_new.jpg",
             alt: "Floor Plan",
             caption: "Detailed Floor Plan"
           }
