@@ -82,6 +82,34 @@ export function ProjectContent({ project }: ProjectContentProps) {
             <p className="text-gray-600">{project.description}</p>
           </section>
 
+          {/* Collaborators Section */}
+          {project.collaborators && project.collaborators.length > 0 && (
+            <section>
+              <h2 className="text-2xl font-bold mb-4">Collaborators</h2>
+              <div className="space-y-2">
+                {project.collaborators.map((collaborator, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <span className="font-medium">{collaborator.name}</span>
+                    <span className="text-gray-400">•</span>
+                    <span className="text-gray-600">{collaborator.role}</span>
+                    {collaborator.url && (
+                      <>
+                        <span className="text-gray-400">•</span>
+                        <Link 
+                          href={collaborator.url} 
+                          target="_blank" 
+                          className="text-accent hover:underline"
+                        >
+                          Portfolio
+                        </Link>
+                      </>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           {project.sections?.map((section, index) => (
             <section key={index}>
               <h2 className="text-2xl font-bold mb-4">{section.title}</h2>
@@ -92,42 +120,47 @@ export function ProjectContent({ project }: ProjectContentProps) {
           {/* Image Gallery */}
           <section className="space-y-8">
             {project.imageGroups.map((group, groupIndex) => (
-              <div 
-                key={groupIndex} 
-                className={cn(
-                  "space-y-4",
-                  group.layout === 'row' && `space-y-0 grid ${group.images.length === 2 ? 'grid-cols-2' : 'grid-cols-3'} gap-4`
+              <>
+                <div 
+                  key={groupIndex} 
+                  className={cn(
+                    "space-y-4",
+                    group.layout === 'row' && `space-y-0 grid ${group.images.length === 2 ? 'grid-cols-2' : 'grid-cols-3'} gap-4`
+                  )}
+                >
+                  {group.images.map((image, imageIndex) => (
+                    <figure 
+                      key={imageIndex} 
+                      className={cn(
+                        "cursor-zoom-in",
+                        group.layout === 'stack' ? "space-y-2" : "space-y-1"
+                      )}
+                      onClick={() => openLightbox(groupIndex, imageIndex)}
+                    >
+                      <div className={cn(
+                        "relative",
+                        group.layout === 'stack' ? "h-[400px]" : "aspect-[2/3]"
+                      )}>
+                        <Image
+                          src={image.url}
+                          alt={image.alt}
+                          fill
+                          className={cn(
+                            "hover:opacity-90 transition-opacity",
+                            groupIndex === 0 ? "object-cover" : "object-contain"
+                          )}
+                        />
+                      </div>
+                      <figcaption className="text-sm text-gray-500">
+                        {image.caption}
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+                {groupIndex === 0 && (
+                  <hr className="border-t-2 border-gray-300 my-16" />
                 )}
-              >
-                {group.images.map((image, imageIndex) => (
-                  <figure 
-                    key={imageIndex} 
-                    className={cn(
-                      "cursor-zoom-in",
-                      group.layout === 'stack' ? "space-y-2" : "space-y-1"
-                    )}
-                    onClick={() => openLightbox(groupIndex, imageIndex)}
-                  >
-                    <div className={cn(
-                      "relative",
-                      group.layout === 'stack' ? "h-[400px]" : "aspect-[2/3]"
-                    )}>
-                      <Image
-                        src={image.url}
-                        alt={image.alt}
-                        fill
-                        className={cn(
-                          "hover:opacity-90 transition-opacity",
-                          groupIndex === 0 ? "object-cover" : "object-contain"
-                        )}
-                      />
-                    </div>
-                    <figcaption className="text-sm text-gray-500">
-                      {image.caption}
-                    </figcaption>
-                  </figure>
-                ))}
-              </div>
+              </>
             ))}
           </section>
 

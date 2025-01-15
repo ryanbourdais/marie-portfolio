@@ -35,7 +35,7 @@ const ProjectCard = ({ title, category, description, id, imageGroups }: ProjectC
       className="group cursor-pointer"
     >
       <Link href={`/projects/${id}`}>
-        <div className="relative h-[300px] overflow-hidden rounded-lg mb-4">
+        <div className="relative h-[250px] overflow-hidden rounded-lg">
           <Image
             src={thumbnailImage?.url || ''}
             alt={thumbnailImage?.alt || title}
@@ -48,13 +48,12 @@ const ProjectCard = ({ title, category, description, id, imageGroups }: ProjectC
             <h3 className="text-xl font-bold text-white">{title}</h3>
           </div>
         </div>
-        <p className="text-gray-600 line-clamp-2">{description}</p>
       </Link>
     </motion.div>
   )
 }
 
-type SortOption = 'newest' | 'oldest' | 'title' | 'location'
+type SortOption = 'newest' | 'oldest'
 
 const sortProjects = (projects: any[], sortBy: SortOption) => {
   return [...projects].sort((a, b) => {
@@ -63,10 +62,6 @@ const sortProjects = (projects: any[], sortBy: SortOption) => {
         return parseInt(b.year) - parseInt(a.year)
       case 'oldest':
         return parseInt(a.year) - parseInt(b.year)
-      case 'title':
-        return a.title.localeCompare(b.title)
-      case 'location':
-        return a.location.localeCompare(b.location)
       default:
         return 0
     }
@@ -80,21 +75,23 @@ export default function ProjectsPage() {
   const categories = [
     "All Projects",
     "Residential",
-    "Commercial",
-    "Technical Documentation"
+    "Commercial"
   ]
 
   const sortOptions: { value: SortOption; label: string }[] = [
     { value: 'newest', label: 'Newest First' },
     { value: 'oldest', label: 'Oldest First' },
-    { value: 'title', label: 'Project Name' },
-    { value: 'location', label: 'Location' },
   ]
 
   const allProjects = getAllProjects()
   const filteredProjects = selectedCategory === "All Projects"
     ? allProjects
-    : allProjects.filter(project => project.category === selectedCategory)
+    : allProjects.filter(project => {
+        if (selectedCategory === "Residential") {
+          return project.category.includes("Residential")
+        }
+        return project.category === selectedCategory
+      })
   
   const sortedProjects = sortProjects(filteredProjects, sortBy)
 
@@ -110,8 +107,8 @@ export default function ProjectsPage() {
             My Projects
           </h1>
           <p className="text-xl text-white/90 max-w-2xl">
-            Explore my portfolio of architectural drafting work, featuring residential designs, 
-            commercial projects, and technical documentation.
+          Explore my portfolio of architectural drafting work, featuring residential designs, 
+          commercial projects, and technical documentation.
           </p>
         </div>
       </motion.section>
@@ -196,7 +193,7 @@ export default function ProjectsPage() {
             {sortedProjects.length > 0 ? (
               <motion.div
                 layout
-                className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+                className="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
               >
                 {sortedProjects.map((project) => (
                   <ProjectCard

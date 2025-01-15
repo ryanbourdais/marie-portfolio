@@ -195,6 +195,7 @@ export default function AboutPage() {
                 <Button 
                   variant="outline" 
                   className="w-full"
+                  style={{display: 'none'}}
                   onClick={() => window.open('/portfolio.pdf', '_blank')}
                 >
                   <Download className="w-4 h-4 mr-2" />

@@ -22,6 +22,12 @@ interface ImageGroup {
   }[]
 }
 
+interface Collaborator {
+  name: string
+  role: string
+  url?: string
+}
+
 export interface Project {
   id: string
   title: string
@@ -31,6 +37,7 @@ export interface Project {
   description: string
   sections?: ProjectSection[]
   services: string[]
+  collaborators?: Collaborator[]
   imageGroups: ImageGroup[]
   technicalDrawings?: TechnicalDrawing[]
   pdf?: {
@@ -42,17 +49,11 @@ export interface Project {
 export const projects: Record<string, Project> = {
   'joseph-st': {
     id: 'joseph-st',
-    title: "Joseph Street Project",
+    title: "Joseph Street",
     category: "Residential",
     location: "New Orleans, LA",
     year: "2024",
-    description: "A comprehensive residential project showcasing modern architectural design with traditional New Orleans influences.",
-    sections: [
-      {
-        title: "Project Overview",
-        content: "Complete architectural documentation including floor plans, elevations, and detailed drawings for a residential renovation in New Orleans. This project combines modern amenities with traditional architectural elements to create a harmonious living space."
-      }
-    ],
+    description: "This project features a master suite conversion on the first floor, complemented by a new rear deck and pool. The design includes a front mudroom addition, an updated facade, and a spacious storage shed at the rear, all crafted to enhance both style and functionality.",
     services: [
       "Complete architectural drawings",
       "Building permit documentation",
@@ -64,14 +65,14 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/joseph_st/renders/Kitchen_Rendered_Edited.png",
-            alt: "Kitchen Design",
-            caption: "Modern Kitchen Design"
-          },
-          {
             url: "/projects/joseph_st/renders/FOYER_EDITED_RENDER.png",
             alt: "Foyer Design",
             caption: "Elegant Foyer with Custom Trim"
+          },
+          {
+            url: "/projects/joseph_st/renders/Kitchen_Rendered_Edited.png",
+            alt: "Kitchen Design",
+            caption: "Modern Kitchen Design"
           }
         ]
       },
@@ -79,14 +80,14 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/joseph_st/floor_plan.jpg",
-            alt: "Documentation Page 11",
-            caption: "Technical Documentation"
+            url: "/projects/joseph_st/floor_plan_2.jpg",
+            alt: "First Floor Plan",
+            caption: "First Floor Plan"
           },
           {
-            url: "/projects/joseph_st/floor_plan_2.jpg",
-            alt: "Documentation Page 12",
-            caption: "Technical Documentation"
+            url: "/projects/joseph_st/floor_plan.jpg",
+            alt: "Second Floor Plan",
+            caption: "Second Floor Plan"
           }
         ]
       },
@@ -96,12 +97,12 @@ export const projects: Record<string, Project> = {
           {
             url: "/projects/joseph_st/elevation_1.jpg",
             alt: "Front Elevation",
-            caption: "Front Elevation Design"
+            caption: "Front Elevation"
           },
           {
             url: "/projects/joseph_st/elevation_2.jpg",
-            alt: "Side Elevation",
-            caption: "Side Elevation Design"
+            alt: "Back Elevation",
+            caption: "Back Elevation"
           }
         ]
       },
@@ -110,13 +111,13 @@ export const projects: Record<string, Project> = {
         images: [
           {
             url: "/projects/joseph_st/elevation_3.jpg",
-            alt: "Rear Elevation",
-            caption: "Rear Elevation Design"
+            alt: "Side Elevation",
+            caption: "Side Elevation"
           },
           {
             url: "/projects/joseph_st/elevation_4.jpg",
             alt: "Side Elevation",
-            caption: "Side Elevation Design"
+            caption: "Side Elevation"
           }
         ]
       }
@@ -128,17 +129,11 @@ export const projects: Record<string, Project> = {
   },
   'cuddihy-st': {
     id: 'cuddihy-st',
-    title: "Cuddihy Street Renovation",
+    title: "Cuddihy Street",
     category: "Residential",
     location: "Metairie, LA",
     year: "2024",
-    description: "Modern home renovation project featuring updated interiors and thoughtful space planning.",
-    sections: [
-      {
-        title: "Project Overview",
-        content: "Complete renovation design focusing on modernizing the space while maintaining functionality."
-      }
-    ],
+    description: "This project features a stunning glass box addition over an existing roof, creating a master suite with a luxurious bathroom and expansive closet. The design includes a new laundry room, seamlessly integrated to improve the home's overall utility. The glass box serves as a focal point, offering breathtaking views of the site's beautiful garden.",
     services: [
       "Renovation planning",
       "Interior design",
@@ -156,8 +151,8 @@ export const projects: Record<string, Project> = {
           },
           {
             url: "/projects/cuddihy_st/renders/2024.35_315_Cuddihy_Metairie_LA._Home_Renovation__02_.png",
-            alt: "Kitchen Renovation",
-            caption: "Modern Kitchen Design"
+            alt: "Bathroom Renovation",
+            caption: "Master Bathroom Design"
           },
           {
             url: "/projects/cuddihy_st/renders/Sink_Area_.png",
@@ -186,13 +181,8 @@ export const projects: Record<string, Project> = {
         images: [
           {
             url: "/projects/cuddihy_st/elevation_1.jpg",
-            alt: "Front Elevation",
-            caption: "Front Elevation"
-          },
-          {
-            url: "/projects/cuddihy_st/elevation_2.jpg",
-            alt: "Side Elevation",
-            caption: "Side Elevation"
+            alt: "Front and Rear Elevations",
+            caption: "Front and Rear Elevations"
           }
         ]
       },
@@ -200,9 +190,14 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
+            url: "/projects/cuddihy_st/elevation_2.jpg",
+            alt: "Side Elevation",
+            caption: "Side Elevation"
+          },
+          {
             url: "/projects/cuddihy_st/elevation_3.jpg",
-            alt: "Rear Elevation",
-            caption: "Rear Elevation"
+            alt: "Side Elevation",
+            caption: "Side Elevation"
           }
         ]
       }
@@ -214,17 +209,11 @@ export const projects: Record<string, Project> = {
   },
   'calhoun-st': {
     id: 'calhoun-st',
-    title: "Calhoun Street Project",
-    category: "Residential",
+    title: "Calhoun Street",
+    category: "High-Density Residential",
     location: "New Orleans, LA",
     year: "2024",
-    description: "Elegant residential renovation combining traditional New Orleans architecture with contemporary living spaces.",
-    sections: [
-      {
-        title: "Design Approach",
-        content: "Thoughtful renovation preserving historical elements while introducing modern functionality."
-      }
-    ],
+    description: "This elegant renovation transformed a double home into a spacious single residence with 8 bedrooms, ideal for student living near Yulman Stadium. The project features a modern kitchen with Spanish design elements, luxurious bathrooms, and a cozy common room with porch access. A thoughtful 5-foot rear addition enhances the living space, providing ample room for comfort and style.",
     services: [
       "Architectural design",
       "Space planning",
@@ -236,14 +225,14 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/calhoun_st/renders/EDITED_RENDERS/KITCHEN_RENDER.jpg",
-            alt: "Kitchen Design",
-            caption: "Contemporary Kitchen"
-          },
-          {
             url: "/projects/calhoun_st/renders/EDITED_RENDERS/LIVING_ROOM_RENDER .jpg",
             alt: "Living Room",
             caption: "Spacious Living Area"
+          },
+          {
+            url: "/projects/calhoun_st/renders/EDITED_RENDERS/KITCHEN_RENDER.jpg",
+            alt: "Kitchen Design",
+            caption: "Contemporary Kitchen"
           }
         ]
       },
@@ -266,14 +255,9 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/calhoun_st/elevation_1.jpg",
-            alt: "Front Elevation",
-            caption: "Front Elevation"
-          },
-          {
-            url: "/projects/calhoun_st/elevation_2.jpg",
-            alt: "Side Elevation",
-            caption: "Side Elevation"
+            url: "/projects/calhoun_st/elevation_3.jpg",
+            alt: "Front and Rear Elevations",
+            caption: "Front and Rear Elevations"
           }
         ]
       },
@@ -281,31 +265,30 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/calhoun_st/elevation_3.jpg",
-            alt: "Rear Elevation",
-            caption: "Rear Elevation"
+            url: "/projects/calhoun_st/elevation_1.jpg",
+            alt: "Side Elevation",
+            caption: "Side Elevation"
+          },
+          {
+            url: "/projects/calhoun_st/elevation_2.jpg",
+            alt: "Side Elevation",
+            caption: "Side Elevation"
           }
         ]
       }
     ],
     pdf: {
-      url: "/projects/calhoun_st/calhoun_stf.pdf",
+      url: "/projects/calhoun_st/calhoun_st.pdf",
       title: "Calhoun Street Project Documentation"
     }
   },
   'hillary-st': {
     id: 'hillary-st',
-    title: "Hillary Street Project",
+    title: "Hillary Street",
     category: "Residential",
     location: "New Orleans, LA",
     year: "2024",
-    description: "Comprehensive home renovation featuring modern amenities while preserving historical character.",
-    sections: [
-      {
-        title: "Project Scope",
-        content: "Full-scale renovation including interior updates, outdoor living spaces, and structural improvements."
-      }
-    ],
+    description: "This project transformed a duplex into a spacious single-family home, featuring a large master bedroom and guest room on the first floor, with an open-concept living area enhanced by a small addition. The second floor includes a new office space, a master bedroom with a walk-in closet, and two large bedrooms connected by a Jack and Jill bathroom.",
     services: [
       "Architectural design",
       "Interior planning",
@@ -342,14 +325,9 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/hillary_st/elevation_1.jpg",
-            alt: "Front Elevation",
-            caption: "Front Elevation"
-          },
-          {
-            url: "/projects/hillary_st/elevation_2.jpg",
-            alt: "Side Elevation",
-            caption: "Side Elevation"
+            url: "/projects/hillary_st/elevation_3.jpg",
+            alt: "Front and Rear Elevations",
+            caption: "Front and Rear Elevations"
           }
         ]
       },
@@ -357,9 +335,14 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/hillary_st/elevation_3.jpg",
-            alt: "Rear Elevation",
-            caption: "Rear Elevation"
+            url: "/projects/hillary_st/elevation_1.jpg",
+            alt: "Side Elevation",
+            caption: "Side Elevation"
+          },
+          {
+            url: "/projects/hillary_st/elevation_2.jpg",
+            alt: "Side Elevation",
+            caption: "Side Elevation"
           }
         ]
       }
@@ -371,17 +354,11 @@ export const projects: Record<string, Project> = {
   },
   'burdette-st': {
     id: 'burdette-st',
-    title: "Burdette Street Project",
-    category: "Residential",
+    title: "Burdette Street",
+    category: "Commercial",
     location: "New Orleans, LA",
     year: "2024",
-    description: "Modern residential renovation focusing on open-concept living and improved functionality.",
-    sections: [
-      {
-        title: "Project Goals",
-        content: "Creating a seamless flow between spaces while maximizing natural light and functionality."
-      }
-    ],
+    description: "This innovative community center utilizes prefabricated structures tailored to city standards, fostering neighborhood engagement. The site features vibrant community gardens and a spacious circulation deck adorned with three majestic trees. Designed for versatility, it serves as a hub for local activities and gatherings.",
     services: [
       "Architectural design",
       "Interior planning",
@@ -419,13 +396,13 @@ export const projects: Record<string, Project> = {
         images: [
           {
             url: "/projects/burdette_st/elevation_1.jpg",
-            alt: "Front Elevation",
-            caption: "Front Elevation"
+            alt: "Front Elevations",
+            caption: "Front Elevations"
           },
           {
             url: "/projects/burdette_st/elevation_2.jpg",
-            alt: "Right Elevation",
-            caption: "Right Elevation"
+            alt: "Front Elevations",
+            caption: "Front Elevations"
           }
         ]
       },
@@ -434,13 +411,13 @@ export const projects: Record<string, Project> = {
         images: [
           {
             url: "/projects/burdette_st/elevation_3.jpg",
-            alt: "Rear Elevation",
-            caption: "Rear Elevation"
+            alt: "Front Elevations",
+            caption: "Front Elevations"
           },
           {
             url: "/projects/burdette_st/elevation_4.jpg",
-            alt: "Left Elevation",
-            caption: "Left Elevation"
+            alt: "Street Elevation",
+            caption: "Street Elevation"
           }
         ]
       }
@@ -516,11 +493,22 @@ export const projects: Record<string, Project> = {
   },
   'aspen-st': {
     id: 'aspen-st',
-    title: "Aspen Street Project",
+    title: "Aspen Street",
     category: "Residential",
     location: "New Orleans, LA",
     year: "2025",
     description: "A comprehensive residential renovation project featuring modern design elements while maintaining the home's classic character.",
+    collaborators: [
+      {
+        name: "John Smith",
+        role: "Interior Design",
+        url: "https://johnsmith.com"
+      },
+      {
+        name: "Sarah Johnson",
+        role: "Landscape Architecture"
+      }
+    ],
     services: [
       "Complete architectural drawings",
       "Building permit documentation",
@@ -532,14 +520,14 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/aspen_st/renders/kitchen.jpg",
-            alt: "Kitchen Design",
-            caption: "Modern Kitchen Design"
-          },
-          {
             url: "/projects/aspen_st/renders/living_room.jpg",
             alt: "Living Room Design",
             caption: "Open Concept Living Space"
+          },
+          {
+            url: "/projects/aspen_st/renders/kitchen.jpg",
+            alt: "Kitchen Design",
+            caption: "Modern Kitchen Design"
           }
         ]
       },
@@ -562,14 +550,14 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/aspen_st/elevation_1.jpg",
+            url: "/projects/aspen_st/elevation_3.jpg",
             alt: "Front Elevation",
             caption: "Front Elevation"
           },
           {
-            url: "/projects/aspen_st/elevation_2.jpg",
-            alt: "Right Elevation",
-            caption: "Right Elevation"
+            url: "/projects/aspen_st/elevation_4.jpg",
+            alt: "Rear Elevation",
+            caption: "Rear Elevation"
           }
         ]
       },
@@ -577,14 +565,14 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
-            url: "/projects/aspen_st/elevation_3.jpg",
-            alt: "Rear Elevation",
-            caption: "Rear Elevation"
+            url: "/projects/aspen_st/elevation_1.jpg",
+            alt: "Side Elevation",
+            caption: "Side Elevation"
           },
           {
-            url: "/projects/aspen_st/elevation_4.jpg",
-            alt: "Left Elevation",
-            caption: "Left Elevation"
+            url: "/projects/aspen_st/elevation_2.jpg",
+            alt: "Side Elevation",
+            caption: "Side Elevation"
           }
         ]
       }
@@ -596,17 +584,11 @@ export const projects: Record<string, Project> = {
   },
   'burgundy-st': {
     id: 'burgundy-st',
-    title: "Burgundy Street Project",
+    title: "Burgundy Street",
     category: "Residential",
     location: "New Orleans, LA",
     year: "2024",
-    description: "A thoughtful residential renovation project in historic New Orleans, blending traditional architecture with modern amenities.",
-    sections: [
-      {
-        title: "Project Overview",
-        content: "Complete architectural documentation for a residential renovation that respects the historical context while introducing contemporary living spaces."
-      }
-    ],
+    description: "This unique property features a compact new construction home on a small lot, designed with an open shotgun concept for the living and kitchen areas. It includes two bedrooms and boasts a distinctive front and rear decking system. The renovation blends traditional New Orleans architecture with modern amenities.",
     services: [
       "Complete architectural drawings",
       "Building permit documentation",
@@ -639,13 +621,8 @@ export const projects: Record<string, Project> = {
         images: [
           {
             url: "/projects/burgundy_st/elevation_1.jpg",
-            alt: "Front Elevation",
-            caption: "Front Elevation"
-          },
-          {
-            url: "/projects/burgundy_st/elevation_2.jpg",
-            alt: "Side Elevation",
-            caption: "Side Elevation"
+            alt: "Front and Rear Elevations",
+            caption: "Front and Rear Elevations"
           }
         ]
       },
@@ -653,9 +630,14 @@ export const projects: Record<string, Project> = {
         layout: 'stack',
         images: [
           {
+            url: "/projects/burgundy_st/elevation_2.jpg",
+            alt: "Side Elevation",
+            caption: "Side Elevation"
+          },
+          {
             url: "/projects/burgundy_st/elevation_3.jpg",
-            alt: "Rear Elevation",
-            caption: "Rear Elevation"
+            alt: "Side Elevation",
+            caption: "Side Elevation"
           }
         ]
       }
