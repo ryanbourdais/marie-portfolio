@@ -1,5 +1,5 @@
 export const siteConfig = {
-  title: "Marie French | Architectural Draftsman",
+  title: "Marie French",
   description: "Professional architectural drafting and design services by Marie French, specializing in residential and commercial projects.",
   contact: {
     email: "frenchmarie10@gmail.com",

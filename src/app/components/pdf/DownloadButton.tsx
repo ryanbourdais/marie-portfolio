@@ -24,7 +24,7 @@ const DownloadButton = () => {
         isGenerating ? 'opacity-50 cursor-not-allowed' : 'hover:text-accent'
       }`}
       aria-label="Download Portfolio"
-      style={{display: 'none'}}
+      // style={{display: 'none'}}
     >
       <FiDownload className={`w-4 h-4 ${isGenerating ? 'animate-spin' : ''}`} />
       <span className="hidden lg:inline">

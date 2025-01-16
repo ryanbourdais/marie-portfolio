@@ -7,8 +7,23 @@ import { Download, Mail } from 'lucide-react'
 import { ServiceArea } from '../components/ServiceArea'
 import { ProfileImage } from '../components/ProfileImage'
 import { AvailabilityIndicator } from '../components/AvailabilityIndicator'
+import { useState } from 'react'
+import { generatePDF } from '../components/pdf/generatePDF'
 
 export default function AboutPage() {
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const handleDownload = async () => {
+    try {
+      setIsGenerating(true);
+      await generatePDF();
+    } catch (error) {
+      console.error('Failed to generate PDF:', error);
+    } finally {
+      setIsGenerating(false);
+    }
+  }
+
   return (
     <div className="pt-20">
       {/* Hero Section */}
@@ -194,12 +209,16 @@ export default function AboutPage() {
                 </Button>
                 <Button 
                   variant="outline" 
-                  className="w-full"
-                  style={{display: 'none'}}
-                  onClick={() => window.open('/portfolio.pdf', '_blank')}
+                  className={`w-full ${isGenerating
+                  ? 'opacity-50 cursor-not-allowed' : 'hover:text-accent'}`}
+                  // style={{display: 'none'}}
+                  onClick={handleDownload}
+                  disabled={isGenerating}
                 >
                   <Download className="w-4 h-4 mr-2" />
-                  Download Portfolio
+                  <span className="hidden lg:inline">
+                    {isGenerating ? 'Generating...' : 'Download Portfolio'}
+                  </span>
                 </Button>
               </div>
             </div>
