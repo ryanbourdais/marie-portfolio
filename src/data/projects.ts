@@ -447,70 +447,70 @@ export const projects: Record<string, Project> = {
       title: "Burdette Street Project Documentation"
     }
   },
-  'school-projects': {
-    id: 'school-projects',
-    title: "School Projects",
-    category: "Student Work",
-    location: "Baton Rouge, LA",
-    year: "2018 - 2023",
-    description: `
-      A collection of LSU architectural projects showcasing skills learned in the classroom.
-    `,
-    sections: [
-      {
-        title: "Project Goals",
-        content: "To demonstrate proficiency in architectural drafting and design principles..."
-      },
-      {
-        title: "Learning Outcomes",
-        content: "Successfully implemented various drafting techniques and software tools..."
-      }
-    ],
-    services: [
-      "Complete architectural drawings",
-      "Building permit documentation",
-      "3D visualization",
-      "Construction documentation"
-    ],
-    imageGroups: [
-      {
-        layout: 'stack',
-        images: [
-          {
-            url: "/images/school-projects/facade.jpg",
-            alt: "Modern Family Home Exterior",
-            caption: "Front elevation showing modern architectural elements"
-          }
-        ]
-      },
-      {
-        layout: 'stack',
-        images: [
-          {
-            url: "/images/school-projects/1.jpg",
-            alt: "Living Room Design",
-            caption: "Open concept living space"
-          },
-          {
-            url: "/images/school-projects/2.jpg",
-            alt: "Kitchen Layout",
-            caption: "Modern kitchen design"
-          },
-          {
-            url: "/images/school-projects/3.jpg",
-            alt: "Dining Area",
-            caption: "Connected dining space"
-          }
-        ]
-      }
-    ],
-    technicalDrawings: [
-      {
-        url: "/images/school-projects/birdy-bitch.jpg",
-        title: "Foundation Plan"
-      }
-    ]
-  },
+  // 'school-projects': {
+  //   id: 'school-projects',
+  //   title: "School Projects",
+  //   category: "Student Work",
+  //   location: "Baton Rouge, LA",
+  //   year: "2018 - 2023",
+  //   description: `
+  //     A collection of LSU architectural projects showcasing skills learned in the classroom.
+  //   `,
+  //   sections: [
+  //     {
+  //       title: "Project Goals",
+  //       content: "To demonstrate proficiency in architectural drafting and design principles..."
+  //     },
+  //     {
+  //       title: "Learning Outcomes",
+  //       content: "Successfully implemented various drafting techniques and software tools..."
+  //     }
+  //   ],
+  //   services: [
+  //     "Complete architectural drawings",
+  //     "Building permit documentation",
+  //     "3D visualization",
+  //     "Construction documentation"
+  //   ],
+  //   imageGroups: [
+  //     {
+  //       layout: 'stack',
+  //       images: [
+  //         {
+  //           url: "/images/school-projects/facade.jpg",
+  //           alt: "Modern Family Home Exterior",
+  //           caption: "Front elevation showing modern architectural elements"
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       layout: 'stack',
+  //       images: [
+  //         {
+  //           url: "/images/school-projects/1.jpg",
+  //           alt: "Living Room Design",
+  //           caption: "Open concept living space"
+  //         },
+  //         {
+  //           url: "/images/school-projects/2.jpg",
+  //           alt: "Kitchen Layout",
+  //           caption: "Modern kitchen design"
+  //         },
+  //         {
+  //           url: "/images/school-projects/3.jpg",
+  //           alt: "Dining Area",
+  //           caption: "Connected dining space"
+  //         }
+  //       ]
+  //     }
+  //   ],
+  //   technicalDrawings: [
+  //     {
+  //       url: "/images/school-projects/birdy-bitch.jpg",
+  //       title: "Foundation Plan"
+  //     }
+  //   ]
+  // },
   'aspen-st': {
     id: 'aspen-st',
     title: "Aspen Street",
