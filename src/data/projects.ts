@@ -205,7 +205,17 @@ export const projects: Record<string, Project> = {
     pdf: {
       url: "/projects/cuddihy_st/cuddihy_st.pdf",
       title: "Cuddihy Street Renovation Documentation"
-    }
+    },
+    collaborators: [
+      {
+        name: "Chris Stewart",
+        role: "Architect"
+      },
+      {
+        name: "Michael Delgiudice",
+        role: "Architect"
+      }
+    ]
   },
   'calhoun-st': {
     id: 'calhoun-st',
@@ -388,6 +398,11 @@ export const projects: Record<string, Project> = {
             url: "/projects/burdette_st/floor_plan_new.jpg",
             alt: "Floor Plan",
             caption: "Detailed Floor Plan"
+          },
+          {
+            url: "/projects/burdette_st/site_plan.jpg",
+            alt: "Site Plan",
+            caption: "Site Plan"
           }
         ]
       },
@@ -416,6 +431,11 @@ export const projects: Record<string, Project> = {
           },
           {
             url: "/projects/burdette_st/elevation_4.jpg",
+            alt: "Street Elevation",
+            caption: "Street Elevation"
+          },
+          {
+            url: "/projects/burdette_st/elevation_5.jpg",
             alt: "Street Elevation",
             caption: "Street Elevation"
           }
@@ -500,13 +520,16 @@ export const projects: Record<string, Project> = {
     description: "A comprehensive residential renovation project featuring modern design elements while maintaining the home's classic character.",
     collaborators: [
       {
-        name: "John Smith",
-        role: "Interior Design",
-        url: "https://johnsmith.com"
+        name: "John Grey",
+        role: "Project Manager and Architect"
       },
       {
-        name: "Sarah Johnson",
-        role: "Landscape Architecture"
+        name: "Charles Neyrey",
+        role: "Architect"
+      },
+      {
+        name: "Brooke Loupe",
+        role: "Architectural Intern"
       }
     ],
     services: [
@@ -645,7 +668,25 @@ export const projects: Record<string, Project> = {
     pdf: {
       url: "/projects/burgundy_st/burgundy_st.pdf",
       title: "Burgundy Street Project Documentation"
-    }
+    },
+    collaborators: [
+      {
+        name: "Mandita Malhotra",
+        role: "Architectural Intern"
+      },
+      {
+        name: "James Vo",
+        role: "Architectural Intern"
+      },
+      {
+        name: "Charles Neyrey",
+        role: "Architect"
+      },
+      {
+        name: "Marie French",
+        role: "Architectural Intern"
+      }
+    ]
   }
 }
 
