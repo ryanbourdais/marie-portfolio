@@ -212,10 +212,6 @@ export const projects: Record<string, Project> = {
         role: "Architectural Intern"
       },
       {
-        name: "Chris Stewart",
-        role: "Architect"
-      },
-      {
         name: "Michael Delgiudice",
         role: "Architect"
       }
