@@ -208,6 +208,10 @@ export const projects: Record<string, Project> = {
     },
     collaborators: [
       {
+        name: "Marie French",
+        role: "Architectural Intern"
+      },
+      {
         name: "Chris Stewart",
         role: "Architect"
       },
@@ -520,6 +524,10 @@ export const projects: Record<string, Project> = {
     description: "A comprehensive residential renovation project featuring modern design elements while maintaining the home's classic character.",
     collaborators: [
       {
+        name: "Marie French",
+        role: "Architectural Intern"
+      },
+      {
         name: "John Grey",
         role: "Project Manager and Architect"
       },
@@ -671,6 +679,10 @@ export const projects: Record<string, Project> = {
     },
     collaborators: [
       {
+        name: "Marie French",
+        role: "Architectural Intern"
+      },
+      {
         name: "Mandita Malhotra",
         role: "Architectural Intern"
       },
@@ -681,11 +693,8 @@ export const projects: Record<string, Project> = {
       {
         name: "Charles Neyrey",
         role: "Architect"
-      },
-      {
-        name: "Marie French",
-        role: "Architectural Intern"
       }
+
     ]
   }
 }
