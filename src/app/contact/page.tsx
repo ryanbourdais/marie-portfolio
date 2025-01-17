@@ -1,10 +1,10 @@
 'use client'
+import React from 'react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Loader2, Mail, Phone, MapPin, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
-import { siteConfig } from '@/data/content'
 
 interface ContactFormData {
   name: string
@@ -86,34 +86,45 @@ export default function ContactPage() {
 
       {/* Contact Content */}
       <section className="py-16">
-        <div className="container mx-auto px-4 py-12">
-          <div className="max-w-2xl mx-auto">
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h2 className="text-3xl font-bold mb-8 text-center">Get in Touch</h2>
-              <p className="text-gray-600 mb-12 text-center">
-                I'm always interested in hearing about new opportunities and projects. 
-                Feel free to reach out if you'd like to discuss working together.
-              </p>
-              <div className="space-y-6 max-w-md mx-auto">
-                <div className="flex items-center space-x-4 justify-start">
-                  <Mail className="w-6 h-6 text-accent" />
-                  <h3 className="font-semibold w-24">Email</h3>
-                  <a href={`mailto:${siteConfig.contact.email}`} className="text-gray-600 hover:text-accent">
-                    {siteConfig.contact.email}
-                  </a>
-                </div>
-                <div className="flex items-center space-x-4 justify-start">
-                  <MapPin className="w-6 h-6 text-accent" />
-                  <h3 className="font-semibold w-24">Location</h3>
-                  <p className="text-gray-600">New Orleans, LA</p>
-                </div>
-                <div className="flex items-center space-x-4 justify-start">
-                  <Clock className="w-6 h-6 text-accent" />
-                  <h3 className="font-semibold w-24">Availability</h3>
-                  <p className="text-gray-600">Available for new projects</p>
-                </div>
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            {/* Contact Information Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-xl shadow-lg p-10"
+            >
+              <h2 className="text-3xl font-bold mb-8">Contact Information</h2>
+              <div className="grid gap-8">
+                {contactInfo.map((info, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-start gap-6"
+                  >
+                    <div className="p-4 bg-gray-50 rounded-lg shadow-sm">
+                      {React.cloneElement(info.icon, { className: "w-8 h-8 text-accent" })}
+                    </div>
+                    <div>
+                      <p className="text-xl font-medium text-gray-900 mb-1">{info.label}</p>
+                      {info.href ? (
+                        <a 
+                          href={info.href}
+                          className="text-lg text-gray-600 hover:text-accent transition-colors"
+                        >
+                          {info.value}
+                        </a>
+                      ) : (
+                        <p className="text-lg text-gray-600">{info.value}</p>
+                      )}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
