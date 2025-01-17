@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { Loader2, Mail, Phone, MapPin, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { motion } from 'framer-motion'
+import { siteConfig } from '@/data/content'
 
 interface ContactFormData {
   name: string
@@ -85,142 +86,34 @@ export default function ContactPage() {
 
       {/* Contact Content */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-            {/* Contact Information */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
-                <div className="grid gap-6">
-                  {contactInfo.map((info, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-start gap-4"
-                    >
-                      <div className="p-3 bg-white rounded-lg shadow-sm">
-                        {info.icon}
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">{info.label}</p>
-                        {info.href ? (
-                          <a 
-                            href={info.href}
-                            className="text-gray-600 hover:text-accent transition-colors"
-                          >
-                            {info.value}
-                          </a>
-                        ) : (
-                          <p className="text-gray-600">{info.value}</p>
-                        )}
-                      </div>
-                    </motion.div>
-                  ))}
+        <div className="container mx-auto px-4 py-12">
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h2 className="text-3xl font-bold mb-8 text-center">Get in Touch</h2>
+              <p className="text-gray-600 mb-12 text-center">
+                I'm always interested in hearing about new opportunities and projects. 
+                Feel free to reach out if you'd like to discuss working together.
+              </p>
+              <div className="space-y-6 max-w-md mx-auto">
+                <div className="flex items-center space-x-4 justify-start">
+                  <Mail className="w-6 h-6 text-accent" />
+                  <h3 className="font-semibold w-24">Email</h3>
+                  <a href={`mailto:${siteConfig.contact.email}`} className="text-gray-600 hover:text-accent">
+                    {siteConfig.contact.email}
+                  </a>
+                </div>
+                <div className="flex items-center space-x-4 justify-start">
+                  <MapPin className="w-6 h-6 text-accent" />
+                  <h3 className="font-semibold w-24">Location</h3>
+                  <p className="text-gray-600">New Orleans, LA</p>
+                </div>
+                <div className="flex items-center space-x-4 justify-start">
+                  <Clock className="w-6 h-6 text-accent" />
+                  <h3 className="font-semibold w-24">Availability</h3>
+                  <p className="text-gray-600">Available for new projects</p>
                 </div>
               </div>
             </div>
-
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="bg-white rounded-lg shadow-lg p-8"
-            >
-              <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
-              <form 
-                onSubmit={handleSubmit(onSubmit)}
-                data-netlify="true"
-                name="contact"
-                method="POST"
-                className="space-y-6"
-              >
-                <input type="hidden" name="form-name" value="contact" />
-                
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-900">Name</label>
-                  <input
-                    {...register('name', { required: 'Name is required' })}
-                    className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow"
-                    placeholder="Your name"
-                  />
-                  {errors.name && (
-                    <p className="text-red-500 text-sm">{errors.name.message}</p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-900">Email</label>
-                  <input
-                    type="email"
-                    {...register('email', { 
-                      required: 'Email is required',
-                      pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: 'Invalid email address'
-                      }
-                    })}
-                    className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow"
-                    placeholder="your.email@example.com"
-                  />
-                  {errors.email && (
-                    <p className="text-red-500 text-sm">{errors.email.message}</p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-900">Subject</label>
-                  <input
-                    {...register('subject', { required: 'Subject is required' })}
-                    className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow"
-                    placeholder="What's this about?"
-                  />
-                  {errors.subject && (
-                    <p className="text-red-500 text-sm">{errors.subject.message}</p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-gray-900">Message</label>
-                  <textarea
-                    {...register('message', { required: 'Message is required' })}
-                    rows={5}
-                    className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent transition-shadow resize-none"
-                    placeholder="Leave me a message"
-                  />
-                  {errors.message && (
-                    <p className="text-red-500 text-sm">{errors.message.message}</p>
-                  )}
-                </div>
-
-                <Button 
-                  type="submit" 
-                  disabled={isSubmitting}
-                  className="w-full"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    'Send Message'
-                  )}
-                </Button>
-
-                {submitSuccess && (
-                  <motion.p
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-green-600 text-center font-medium"
-                  >
-                    Thank you! Your message has been sent successfully.
-                  </motion.p>
-                )}
-              </form>
-            </motion.div>
           </div>
         </div>
       </section>
