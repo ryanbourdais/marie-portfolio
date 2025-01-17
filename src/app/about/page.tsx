@@ -289,7 +289,7 @@ export default function AboutPage() {
                 <h3 className="font-semibold">Contact Information</h3>
                 <div className="space-y-4">
                   <p className="text-gray-600">Based in New Orleans, LA</p>
-                  <p className="text-gray-600">Available for projects across America</p>
+                  <p className="text-gray-600">Available for projects across the United States</p>
                 </div>
                 <div className="space-y-3">
                   <Button asChild className="w-full">

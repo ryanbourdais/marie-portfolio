@@ -19,7 +19,7 @@ const locations = [
   },
   {
     city: "Remote Work",
-    province: "America-wide",
+    province: "United States",
     type: "Remote Options",
     info: "Open to remote positions",
     icon: Globe,
@@ -37,7 +37,7 @@ export function ServiceArea() {
         >
           <h2 className="text-3xl font-bold mb-4">Location Preferences</h2>
           <p className="text-gray-600">
-            Based in New Orleans, open to opportunities in the GNO and remote positions across America.
+            Based in New Orleans, open to opportunities in the GNO and remote positions across the United States.
           </p>
         </motion.div>
 
