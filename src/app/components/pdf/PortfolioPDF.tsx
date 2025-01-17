@@ -145,6 +145,11 @@ const styles = StyleSheet.create({
     height: '70vh',
     objectFit: 'cover',
   },
+  structuralImage: {
+    width: '45vw',
+    height: '65vh',
+    objectFit: 'contain',
+  },
   fullPageRenderImage: {
     width: '95vw',
     height: '80vh',
@@ -355,12 +360,19 @@ const PortfolioPDF: React.FC = () => {
                           ))
                         ) : (
                           // Single image - centered and larger
-                          <View style={{ flex: 1, alignItems: 'center' }}>
+                          <View style={{ flex: 1, alignItems: 'center', position: 'relative', height: '100%' }}>
                             <Image
                               src={getAbsoluteUrl(pair[0].url)}
                               style={styles.fullPageRenderImage}
                             />
-                            <Text style={styles.covertext}>
+                            <Text style={{
+                              ...styles.covertext,
+                              position: 'absolute',
+                              bottom: 20,
+                              right: 20,
+                              textAlign: 'right',
+                              paddingLeft: 0
+                            }}>
                               {pair[0].caption}
                             </Text>
                           </View>
@@ -377,7 +389,9 @@ const PortfolioPDF: React.FC = () => {
                 <Page key={`${gIndex}-${pIndex}`} size="A4" style={styles.coverpage} orientation="landscape">
                   <View style={styles.coversection}>
                     <Text style={styles.groupTitle}>
-                      {gIndex === 1 ? "Floor Plans" : "Elevations"}
+                      {gIndex === 1 ? "Floor Plans" : 
+                       gIndex === 2 ? "Elevations" : 
+                       "Structural Drawings"}
                     </Text>
                     {gIndex === 2 ? (
                       <View style={styles.elevationGrid}>
@@ -417,6 +431,43 @@ const PortfolioPDF: React.FC = () => {
                             </View>
                           ))
                         )}
+                      </View>
+                    ) : gIndex === 3 ? (
+                      <View style={styles.imageContainer}>
+                        <View style={styles.imageRow}>
+                          {pair.length === 2 ? (
+                            // Two images - side by side
+                            pair.map((image, iIndex) => (
+                              <View key={iIndex} style={{ flex: 1 }}>
+                                <Image
+                                  src={getAbsoluteUrl(image.url)}
+                                  style={styles.structuralImage}
+                                />
+                                <Text style={styles.covertext}>
+                                  {image.caption}
+                                </Text>
+                              </View>
+                            ))
+                          ) : (
+                            // Single image - centered and larger
+                            <View style={{ flex: 1, alignItems: 'center', position: 'relative', height: '100%' }}>
+                              <Image
+                                src={getAbsoluteUrl(pair[0].url)}
+                                style={styles.fullPageRenderImage}
+                              />
+                              <Text style={{
+                                ...styles.covertext,
+                                position: 'absolute',
+                                bottom: 20,
+                                right: 20,
+                                textAlign: 'right',
+                                paddingLeft: 0
+                              }}>
+                                {pair[0].caption}
+                              </Text>
+                            </View>
+                          )}
+                        </View>
                       </View>
                     ) : (
                       <View style={styles.stackedContainer}>
