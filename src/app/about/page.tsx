@@ -9,6 +9,7 @@ import { ProfileImage } from '../components/ProfileImage'
 import { AvailabilityIndicator } from '../components/AvailabilityIndicator'
 import { useState } from 'react'
 import { generatePDF } from '../components/pdf/generatePDF'
+import { PiCrossThin } from "react-icons/pi";
 
 export default function AboutPage() {
   const [isGenerating, setIsGenerating] = useState(false);
@@ -229,6 +230,9 @@ export default function AboutPage() {
         </div>
       </div>
 
+      <div className="flex justify-end pr-4 mb-4">
+        <PiCrossThin className="text-gray-400 w-6 h-6" />
+      </div>
       <ServiceArea />
     </div>
   )

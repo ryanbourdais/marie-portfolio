@@ -129,9 +129,11 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   planImage: {
-    width: '90vw',
-    height: '40vh',
+    width: '95vw',
+    height: '80vh',
     objectFit: 'contain',
+    alignSelf: 'center',
+    marginBottom: '10px'
   },
   elevationImage: {
     width: '90vw',
@@ -144,9 +146,10 @@ const styles = StyleSheet.create({
     objectFit: 'cover',
   },
   fullPageRenderImage: {
-    width: '90vw',
-    height: '70vh',
-    objectFit: 'cover',
+    width: '95vw',
+    height: '80vh',
+    objectFit: 'contain',
+    alignSelf: 'center'
   },
   imageRow: {
     flexDirection: 'row',
@@ -189,7 +192,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   groupTitle: {
-    fontSize: 14,
+    fontSize: 12,
     marginBottom: 20,
     marginTop: 20,
     color: '#1a1a1a',
@@ -218,6 +221,25 @@ const styles = StyleSheet.create({
     width: '45vw',
     height: '70vh',
     objectFit: 'cover',
+  },
+  elevationGrid: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: '20px',
+    padding: '0 2vw',
+  },
+  elevationGridItem: {
+    width: '45vw',
+    height: '35vh',
+    objectFit: 'contain',
+  },
+  elevationGridItemFull: {
+    width: '95vw',
+    height: '40vh',
+    objectFit: 'contain',
+    marginBottom: '20px',
   },
 })
 
@@ -275,21 +297,17 @@ const PortfolioPDF: React.FC = () => {
                 <View style={styles.coverHeader}>
                   <Text style={styles.covertitle}>{project.title}</Text>
                   <Text style={styles.covertext}>
+                    {project.collaborators && project.collaborators.length > 0 
+                      ? project.collaborators.map((collaborator, cIndex) => 
+                          collaborator.name + (cIndex < project.collaborators!.length - 1 ? ' | ' : '')
+                        )
+                      : 'Marie French | Charles Neyrey'
+                    }
+                  </Text>
+                  <Text style={styles.covertext}>
                     {project.category} | {project.location} | {project.year}
                   </Text>
                   <Text style={styles.covertext}>{project.description}</Text>
-
-                  {project.collaborators && project.collaborators.length > 0 && (
-                    <>
-                      <Text style={styles.covertitle}>Collaborators</Text>
-                      {project.collaborators.map((collaborator, cIndex) => (
-                        <Text key={cIndex} style={styles.covertext}>
-                          • {collaborator.name}{'\n'}
-                          {'  '}{collaborator.role}
-                        </Text>
-                      ))}
-                    </>
-                  )}
 
                   {project.sections && (
                     <>
@@ -354,26 +372,67 @@ const PortfolioPDF: React.FC = () => {
               ))
             } else {
               // Other groups - vertical stack layout with pagination
-              const pairs = chunk(group.images, 2)
+              const pairs = chunk(group.images, gIndex === 2 ? 4 : 2)
               return pairs.map((pair, pIndex) => (
                 <Page key={`${gIndex}-${pIndex}`} size="A4" style={styles.coverpage} orientation="landscape">
                   <View style={styles.coversection}>
                     <Text style={styles.groupTitle}>
                       {gIndex === 1 ? "Floor Plans" : "Elevations"}
                     </Text>
-                    <View style={styles.stackedContainer}>
-                      {pair.map((image, iIndex) => (
-                        <View key={iIndex}>
-                          <Image
-                            src={getAbsoluteUrl(image.url)}
-                            style={gIndex === 1 ? styles.planImage : styles.elevationImage}
-                          />
-                          <Text style={styles.covertext}>
-                            {image.caption}
-                          </Text>
-                        </View>
-                      ))}
-                    </View>
+                    {gIndex === 2 ? (
+                      <View style={styles.elevationGrid}>
+                        {pair.length === 3 ? (
+                          <>
+                            <View key={0}>
+                              <Image
+                                src={getAbsoluteUrl(pair[0].url)}
+                                style={styles.elevationGridItemFull}
+                              />
+                              <Text style={styles.covertext}>
+                                {pair[0].caption}
+                              </Text>
+                            </View>
+                            {pair.slice(1).map((image, iIndex) => (
+                              <View key={iIndex + 1}>
+                                <Image
+                                  src={getAbsoluteUrl(image.url)}
+                                  style={styles.elevationGridItem}
+                                />
+                                <Text style={styles.covertext}>
+                                  {image.caption}
+                                </Text>
+                              </View>
+                            ))}
+                          </>
+                        ) : (
+                          pair.map((image, iIndex) => (
+                            <View key={iIndex}>
+                              <Image
+                                src={getAbsoluteUrl(image.url)}
+                                style={styles.elevationGridItem}
+                              />
+                              <Text style={styles.covertext}>
+                                {image.caption}
+                              </Text>
+                            </View>
+                          ))
+                        )}
+                      </View>
+                    ) : (
+                      <View style={styles.stackedContainer}>
+                        {pair.map((image, iIndex) => (
+                          <View key={iIndex}>
+                            <Image
+                              src={getAbsoluteUrl(image.url)}
+                              style={styles.planImage}
+                            />
+                            <Text style={styles.covertext}>
+                              {image.caption}
+                            </Text>
+                          </View>
+                        ))}
+                      </View>
+                    )}
                   </View>
                 </Page>
               ))
@@ -410,11 +469,61 @@ const PortfolioPDF: React.FC = () => {
         </React.Fragment>
       ))}
       <Page size="A4" style={styles.coverpage} orientation="landscape">
-        <View style={styles.coverSection}>
-          <View style={styles.coverHeader}>
-            <Text style={styles.covertitle}>Thank you for your interest!</Text>
-            <Text style={styles.covertext}>
-              You can contact me at {siteConfig.contact.email}
+        <View style={{
+          ...styles.coverSection,
+          justifyContent: 'flex-end',
+          alignItems: 'center',
+          paddingBottom: '10vh'
+        }}>
+          <View style={{
+            alignItems: 'center',
+            maxWidth: '60%',
+            padding: '0 20px'
+          }}>
+            <Text style={{
+              ...styles.covertitle,
+              textAlign: 'center',
+              paddingLeft: 0,
+              marginBottom: 15
+            }}>Thank You</Text>
+            <Text style={{
+              ...styles.covertext,
+              textAlign: 'justify',
+              paddingLeft: 0,
+              marginBottom: 12
+            }}>
+              Thank you for taking the time to review my portfolio. I am grateful for the opportunity to share my work with you.
+            </Text>
+            <Text style={{
+              ...styles.covertext,
+              textAlign: 'justify',
+              paddingLeft: 0,
+              marginBottom: 12
+            }}>
+              I would like to express my sincere gratitude to my colleagues and mentors at M2 Studio, whose collaboration and guidance have been instrumental in my growth as an architect. The experiences and knowledge gained working alongside such talented professionals have been invaluable.
+            </Text>
+            <Text style={{
+              ...styles.covertext,
+              textAlign: 'justify',
+              paddingLeft: 0,
+              marginBottom: 12
+            }}>
+              Each project has presented unique opportunities to learn, innovate, and develop my skills as an architect. I am thankful for these experiences and the God-given talents that have allowed me to pursue this meaningful path.
+            </Text>
+            <Text style={{
+              ...styles.covertext,
+              textAlign: 'justify',
+              paddingLeft: 0,
+              marginBottom: 20
+            }}>
+              I look forward to future challenges and opportunities to create meaningful architectural solutions.
+            </Text>
+            <Text style={{
+              ...styles.covertext,
+              textAlign: 'center',
+              paddingLeft: 0
+            }}>
+              For inquiries, please contact me at {siteConfig.contact.email}
             </Text>
           </View>
         </View>

@@ -66,6 +66,10 @@ export const pdfProjects: Record<string, PDFProject> = {
           "3D visualization",
           "Construction documentation"
         ],
+        heroImage: {
+            url: "/projects/joseph_st/renders/hero.jpeg",
+            alt: "Outdoor Renovation"
+          },
         imageGroups: [
           {
             layout: 'stack',
@@ -73,12 +77,12 @@ export const pdfProjects: Record<string, PDFProject> = {
               {
                 url: "/projects/joseph_st/renders/FOYER_EDITED_RENDER.png",
                 alt: "Foyer Design",
-                caption: "Elegant Foyer with Custom Trim"
+                caption: ""
               },
               {
                 url: "/projects/joseph_st/renders/Kitchen_Rendered_Edited.png",
                 alt: "Kitchen Design",
-                caption: "Modern Kitchen Design"
+                caption: ""
               }
             ]
           },
@@ -146,19 +150,14 @@ export const pdfProjects: Record<string, PDFProject> = {
             layout: 'stack',
             images: [
               {
-                url: "/projects/cuddihy_st/renders/hero.jpg",
-                alt: "Outdoor Renovation",
-                caption: "Outdoor render"
-              },
-              {
                 url: "/projects/cuddihy_st/renders/2024.35_315_Cuddihy_Metairie_LA._Home_Renovation__02_.png",
                 alt: "Bathroom Renovation",
-                caption: "Master Bathroom Design"
+                caption: ""
               },
               {
                 url: "/projects/cuddihy_st/renders/Sink_Area_.png",
                 alt: "Sink Area",
-                caption: "Custom Sink Area Design"
+                caption: ""
               }
             ]
           },
@@ -219,26 +218,35 @@ export const pdfProjects: Record<string, PDFProject> = {
         category: "High-Density Residential",
         location: "New Orleans, LA",
         year: "2024",
-        description: "This elegant renovation transformed a double home into a spacious single residence with 8 bedrooms, ideal for student living near Yulman Stadium. The project's centerpiece is a modern kitchen featuring Spanish design elements, including custom tilework and a large island that serves as both a cooking and gathering space. The renovation includes four luxurious bathrooms with high-end fixtures and finishes, complemented by a cozy common room that opens directly to a welcoming front porch through restored historic doors. A thoughtful 5-foot rear addition enhances the living space, providing a seamless transition between the original structure and new construction while maximizing natural light. The project successfully balances the needs of modern student living with the preservation of historic architectural elements, creating comfortable private spaces while fostering a sense of community in shared areas.",
+        description: "This elegant renovation transformed a double home into a spacious single residence with 8 bedrooms, ideal for student living near Yulman Stadium. The project's centerpiece is a modern kitchen featuring Spanish design elements, including a large island that serves as both a cooking and gathering space. The renovation includes four luxurious bathrooms with high-end fixtures and finishes, complemented by a cozy common room that opens directly to a welcoming front porch through restored historic doors. A thoughtful 5-foot rear addition enhances the living space, providing a seamless transition between the original structure and new construction while maximizing natural light. The project successfully balances the needs of modern student living with the preservation of historic architectural elements, creating comfortable private spaces while fostering a sense of community in shared areas.",
         services: [
           "Architectural design",
           "Space planning",
           "3D visualization",
           "Construction documentation"
         ],
+        heroImage: {
+            url: "/projects/calhoun_st/renders/EDITED_RENDERS/COMMON_ROOM.jpg",
+            alt: "Outdoor Renovation"
+          },
         imageGroups: [
           {
             layout: 'stack',
             images: [
               {
-                url: "/projects/calhoun_st/renders/EDITED_RENDERS/LIVING_ROOM_RENDER .jpg",
-                alt: "Living Room",
-                caption: "Spacious Living Area"
+                url: "/projects/calhoun_st/renders/EDITED_RENDERS/BATHROOM_RENDER.jpg",
+                alt: "Bathroom",
+                caption: ""
               },
               {
                 url: "/projects/calhoun_st/renders/EDITED_RENDERS/KITCHEN_RENDER.jpg",
                 alt: "Kitchen Design",
-                caption: "Contemporary Kitchen"
+                caption: ""
+              },
+              {
+                url: "/projects/calhoun_st/renders/EDITED_RENDERS/LIVING_ROOM_RENDER .jpg",
+                alt: "Living Room",
+                caption: ""
               }
             ]
           },
@@ -292,15 +300,19 @@ export const pdfProjects: Record<string, PDFProject> = {
           "3D visualization",
           "Construction documentation"
         ],
+        heroImage: {
+            url: "/projects/hillary_st/renders/renders_one_kitchen.jpeg",
+            alt: "Kitchen Design",
+        },
         imageGroups: [
           {
             layout: 'stack',
             images: [
-              {
-                url: "/projects/hillary_st/renders/renders_one_kitchen.jpeg",
-                alt: "Kitchen Design",
-                caption: "Modern Kitchen Design"
-              }
+                {
+                    url: "/projects/hillary_st/interior_reno.png",
+                    alt: "Interior Renovation",
+                    caption: "Doubles to Dorms addition diagram"
+                  },
             ]
           },
           {
@@ -353,6 +365,10 @@ export const pdfProjects: Record<string, PDFProject> = {
           "Construction documentation",
           "Permit documentation"
         ],
+        heroImage: {
+            url: "/projects/burdette_st/renders/render_two_burdette.jpeg",
+            alt: "Exterior Render",
+        },
         imageGroups: [
           {
             layout: 'stack',
@@ -360,12 +376,7 @@ export const pdfProjects: Record<string, PDFProject> = {
               {
                 url: "/projects/burdette_st/renders/render_one_.jpeg",
                 alt: "Exterior Render",
-                caption: "Modern Exterior Design"
-              },
-              {
-                url: "/projects/burdette_st/renders/render_two_burdette.jpeg",
-                alt: "Exterior Render",
-                caption: "Modern Exterior Design"
+                caption: ""
               }
             ]
           },
@@ -394,11 +405,6 @@ export const pdfProjects: Record<string, PDFProject> = {
               },
               {
                 url: "/projects/burdette_st/elevation_2.jpg",
-                alt: "Front Elevations",
-                caption: "Front Elevations"
-              },
-              {
-                url: "/projects/burdette_st/elevation_3.jpg",
                 alt: "Front Elevations",
                 caption: "Front Elevations"
               },
@@ -486,7 +492,7 @@ export const pdfProjects: Record<string, PDFProject> = {
         category: "Residential",
         location: "New Orleans, LA",
         year: "2025",
-        description: "This comprehensive residential renovation project artfully balances modern design elements with the home's classic New Orleans character through thoughtful architectural interventions. The open-concept living space features restored original millwork alongside contemporary fixtures, creating a seamless blend of old and new. The kitchen renovation serves as a centerpiece of the design, featuring custom cabinetry, high-end appliances, and a large island that creates an inviting space for both cooking and entertaining. The project includes careful restoration of historic windows and doors, while strategic modifications to the floor plan improve flow and functionality throughout the home. The renovation successfully preserves and enhances the property's architectural heritage while introducing modern amenities that elevate the daily living experience.",
+        description: "This comprehensive residential renovation project artfully balances modern design elements with the home's classic New Orleans character through thoughtful architectural interventions. The open-concept living space features restored original millwork alongside contemporary fixtures, creating a seamless blend of old and new. The kitchen renovation serves as a centerpiece of the design, featuring custom cabinetry, high-end appliances, and a large island that creates an inviting space for both cooking and entertaining. The project includes strategic modifications to the floor plan that improve flow and functionality throughout the home. The renovation successfully preserves and enhances the property's architectural heritage while introducing modern amenities that elevate the daily living experience.",
         collaborators: [
           {
             name: "Marie French",
@@ -507,6 +513,10 @@ export const pdfProjects: Record<string, PDFProject> = {
           "3D visualization",
           "Construction documentation"
         ],
+        heroImage: {
+            url: "/projects/aspen_st/renders/kitchen.jpg",
+            alt: "Living Room Design",
+        },
         imageGroups: [
           {
             layout: 'stack',
@@ -514,12 +524,7 @@ export const pdfProjects: Record<string, PDFProject> = {
               {
                 url: "/projects/aspen_st/renders/living_room.jpg",
                 alt: "Living Room Design",
-                caption: "Open Concept Living Space"
-              },
-              {
-                url: "/projects/aspen_st/renders/kitchen.jpg",
-                alt: "Kitchen Design",
-                caption: "Modern Kitchen Design"
+                caption: ""
               }
             ]
           },
@@ -578,15 +583,14 @@ export const pdfProjects: Record<string, PDFProject> = {
           "3D visualization",
           "Construction documentation"
         ],
+        heroImage: {
+            url: "/projects/burgundy_st/renders/RENDER_EXTERIOR.jpeg",
+            alt: "Exterior Render",
+        },
         imageGroups: [
           {
             layout: 'stack',
             images: [
-              {
-                url: "/projects/burgundy_st/renders/RENDER_EXTERIOR.jpeg",
-                alt: "Exterior Render",
-                caption: "Modern Exterior Design"
-              }
             ]
           },
           {
