@@ -391,7 +391,7 @@ export const projects: Record<string, Project> = {
           {
             url: "/projects/burdette_st/renders/render_two_burdette.jpeg",
             alt: "Exterior Render",
-            caption: "Modern Exterior Design"
+            caption: "Modern Interior Design"
           }
         ]
       },
