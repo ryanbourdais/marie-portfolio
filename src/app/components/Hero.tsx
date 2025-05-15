@@ -1,13 +1,31 @@
+"use client"
+
 import { heroContent } from '@/data/content'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useRef } from 'react'
 
 export default function Hero() {
+  const imageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (imageRef.current) {
+        const scrollPosition = window.scrollY;
+        const parallaxOffset = scrollPosition * 0.4; // Adjust the multiplier to control parallax intensity
+        imageRef.current.style.setProperty('--parallax-offset', `-${parallaxOffset}px`);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="relative h-screen overflow-hidden">
       <div className="absolute inset-0 z-0 parallax-container">
-        <div className="parallax-image">
+        <div className="parallax-image" ref={imageRef}>
           <Image
             src={heroContent.backgroundImage}
             alt="Featured architectural project"

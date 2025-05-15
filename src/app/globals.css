@@ -28,6 +28,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
 .parallax-image {
@@ -38,6 +39,11 @@ body {
   height: 100vh;
   transform: translateZ(0);
   will-change: transform;
+}
+
+.parallax-image img {
+  transform: translateY(var(--parallax-offset, 0));
+  transition: transform 0.05s linear;
 }
 
 /* Animations */

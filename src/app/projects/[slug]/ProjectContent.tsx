@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Lightbox } from '@/app/components/ui/lightbox'
 import { DrawingViewer } from '@/app/components/ui/drawing-viewer'
 import { Project } from '@/data/projects'
@@ -16,6 +16,20 @@ interface ProjectContentProps {
 export function ProjectContent({ project }: ProjectContentProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [initialImageIndex, setInitialImageIndex] = useState(0)
+  const heroImageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (heroImageRef.current) {
+        const scrollPosition = window.scrollY;
+        const parallaxOffset = scrollPosition * 0.4; // Adjust multiplier to control parallax intensity
+        heroImageRef.current.style.setProperty('--parallax-offset', `-${parallaxOffset}px`);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Pre-calculate flattened images array for consistent indexing
   const allImages = project.imageGroups.flatMap(group => group.images)
@@ -49,16 +63,20 @@ export function ProjectContent({ project }: ProjectContentProps) {
       </div>
 
       {/* Hero */}
-      <div className="relative h-[60vh] bg-gray-100">
-        <Image
-          src={heroImage?.url || ''}  // Add fallback empty string
-          alt={heroImage?.alt || project.title}  // Fallback to project title
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="absolute inset-0 flex items-center">
+      <div className="relative h-[60vh] bg-gray-100 overflow-hidden">
+        <div className="parallax-container">
+          <div className="parallax-image" ref={heroImageRef}>
+            <Image
+              src={heroImage?.url || ''}  // Add fallback empty string
+              alt={heroImage?.alt || project.title}  // Fallback to project title
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-black/40" />
+          </div>
+        </div>
+        <div className="absolute inset-0 flex items-center z-10">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               {project.title}

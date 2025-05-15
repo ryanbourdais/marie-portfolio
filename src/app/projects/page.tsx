@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Filter, ArrowRight, ArrowUpDown } from 'lucide-react'
 import { getAllProjects } from '@/data/projects'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 interface ProjectCardProps {
@@ -71,7 +71,21 @@ const sortProjects = (projects: any[], sortBy: SortOption) => {
 export default function ProjectsPage() {
   const [selectedCategory, setSelectedCategory] = useState("All Projects")
   const [sortBy, setSortBy] = useState<SortOption>('newest')
+  const headerRef = useRef<HTMLDivElement>(null);
   
+  useEffect(() => {
+    const handleScroll = () => {
+      if (headerRef.current) {
+        const scrollPosition = window.scrollY;
+        const parallaxOffset = scrollPosition * 0.3; // Adjust for desired intensity
+        headerRef.current.style.transform = `translateY(${parallaxOffset}px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const categories = [
     "All Projects",
     "Residential",
@@ -100,9 +114,9 @@ export default function ProjectsPage() {
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-accent text-white py-20"
+        className="bg-accent text-white py-20 relative overflow-hidden"
       >
-        <div className="w-[95%] mx-auto">
+        <div ref={headerRef} className="w-[95%] mx-auto relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             My Projects
           </h1>
